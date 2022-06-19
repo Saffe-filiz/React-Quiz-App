@@ -1,5 +1,6 @@
-import Main from '../Assets/Style/Main.css'
-import Progress from './TheProgress.js'
+import Main from '../Assets/Style/Main.css';
+import Progress from './TheProgress.js';
+import Options from './TheOptions.js';
 
 import { useState } from 'react'
 function App() {
@@ -11,6 +12,7 @@ function App() {
             <div className="questContent">
                 <h1>An interface design application that runs in the browser with team-based collaborative design projects</h1>
             </div>
+            <Options options={['Test1', 'Test2', 'Test3', 'Test4', 'Test5', 'Test6']}/>
         </div>
     </div>
   );
