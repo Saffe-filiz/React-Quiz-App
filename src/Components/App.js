@@ -7,7 +7,10 @@ function App() {
   return (
     <div className="App">
         <div className="container">
-          <Progress selectedQuestion={selectedQuestion} setSelectedQuestion={setSelectedQuestion} questLength={5}/>
+            <Progress selectedQuestion={selectedQuestion} setSelectedQuestion={setSelectedQuestion} questLength={6}/>
+            <div className="questContent">
+                <h1>An interface design application that runs in the browser with team-based collaborative design projects</h1>
+            </div>
         </div>
     </div>
   );

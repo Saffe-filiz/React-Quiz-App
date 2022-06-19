@@ -3,7 +3,7 @@ function Progress ({selectedQuestion, setSelectedQuestion, questLength}) {
 	return (
 		<div className="progressContent">
 		    <ul>
-		    	{Array.from({length: questLength}, (_, index) => <li key={index}><span>{index +1}</span></li>)}
+		    	{Array.from({length: questLength}, (_, index) => <li key={index}><span><p>{index +1}</p></span></li>)}
 		    </ul>
 	    </div>
 	);
