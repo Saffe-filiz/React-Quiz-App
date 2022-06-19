@@ -1,0 +1,73 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	font-size: 100%;
+	font-weight: normal;
+	color: #000000;
+	list-style: none;
+	text-decoration: none;
+
+}
+
+.App {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 100vh;
+	height: auto;
+	background-color: #F2F2F2;
+}
+
+.App .container {
+	width: 836px;
+	height: 594px;
+	padding: 29px 0 17.5px 0;
+	background-color: #ffffff;
+
+}
+
+
+.container .progressContent {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 23px;
+}
+
+.progressContent ul {
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 476px;
+	height: 100%;
+}
+
+.progressContent ul li {
+	position: relative;
+	
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 95px;
+	height: 23px;
+	border: 1px solid red;
+	
+}
+
+.progressContent ul li span {
+	display: inline-flex;
+	align-items:center;
+	justify-content: center;
+	width: 23px;
+	height: 23px;
+	border-radius: 9999px;
+	color: #333333;
+	font-size: 14px;
+	font-weight: 500;
+	border: 4.96px solid #FCC822;
+}
