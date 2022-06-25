@@ -6,10 +6,10 @@ function Control() {
 		<div className="controlContent">
 			<span className="previous button">Previous</span>
 			<span><img src={Time}/></span>
-			<span>
+			<div>
 				<span className="next button">Next</span>
 				<span className="skip-button">Skip</span>
-			</span>
+			</div>
 		</div>
 	)
 }

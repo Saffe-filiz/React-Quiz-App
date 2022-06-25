@@ -38,6 +38,9 @@
 	height: 594px;
 	padding: 29px 0 17.5px 0;
 	background-color: #ffffff;
+	background-repeat: no-repeat;
+	background-position: 2% 100%;
+	background-size: 200px;
 
 }
 
@@ -189,4 +192,27 @@
 
 .options:hover p, .options:hover .choiceName {
 	color: white;
+}
+
+
+.container .controlContent {
+	display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 25px 0 128px;
+}
+
+.controlContent .button {
+	padding: 8.13px 15.09px; 
+
+}
+
+.controlContent .previous {
+	box-shadow: 0px 5px 23px -6px #D1D1D1;
+	background-color: #D1D1D1;
+}
+
+.controlContent .next {
+	background-color: #FCC822;
+	box-shadow: 0px 5px 23px -6px #FBE18F;
 }
