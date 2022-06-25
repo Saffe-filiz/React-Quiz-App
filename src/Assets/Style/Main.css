@@ -204,7 +204,7 @@
 
 .controlContent .button {
 	padding: 8.13px 15.09px; 
-
+	cursor: pointer;
 }
 
 .controlContent .previous {
@@ -213,6 +213,12 @@
 }
 
 .controlContent .next {
+	color: #ffffff;
 	background-color: #FCC822;
 	box-shadow: 0px 5px 23px -6px #FBE18F;
+}
+
+.controlContent .skip {
+	color: #FCC822;
+	margin-right: 2px;
 }
