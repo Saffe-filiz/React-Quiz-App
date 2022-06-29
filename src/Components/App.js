@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}} >
-            <Progress questLength={6}/>
+            <Progress questLength={5}/>
             <div className="questContent">
                 <h1>An interface design application that runs in the browser with team-based collaborative design projects{selectedQuestion}</h1>
             </div>
