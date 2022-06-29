@@ -205,6 +205,7 @@
 .controlContent .button {
 	padding: 8.13px 15.09px; 
 	cursor: pointer;
+	background-color: transparent;
 }
 
 .controlContent .previous {
@@ -241,5 +242,5 @@
 }
 
 .hiddenContent {
-	display: none;
+	visibility: hidden;
 }
