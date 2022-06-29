@@ -1,5 +1,5 @@
 
-function Progress ({selectedQuestion, setSelectedQuestion, questLength}) {
+function Progress ({questLength}) {
 	return (
 		<div className="progressContent">
 		    <ul>

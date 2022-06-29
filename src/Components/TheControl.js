@@ -1,23 +1,24 @@
 import Time from '../Assets/Icons/Time.svg';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
-import Skip from '../Assets/Icons/Skip.svg';
+import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 
-function Control() {
+function Control({selectedQuestion, setSelectedQuestion}) {
+
 	return (
 		<div className="controlContent">
-			<span className="previous button">
-			    <Arrow className="mext-previous"/>
+			<span className="previous button" onClick={() => setSelectedQuestion(selectedQuestion -= 1)}>
+			    <Arrow className="arrowIcon"/>
 			    Previous
 			</span>
 			<span><img src={Time}/></span>
 			<div>
-				<span className="next button">
+				<span className="next button" onClick={() => setSelectedQuestion(selectedQuestion += 1)}>
 				    Next
-				    <Arrow className="mext-arrow"/>				    
+				    <Arrow className="arrowIcon"/>				    
 				</span>
-				<span className="skip button">
+				<span className="skip button" onClick={() => setSelectedQuestion(selectedQuestion += 1)}>
 				    Skip
-				    <img src={Skip}/>
+				    <Skip/>
 				</span>
 			</div>
 		</div>
