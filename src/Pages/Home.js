@@ -1,11 +1,11 @@
-import Main from '../Assets/Style/Main.css';
-import Progress from './TheProgress.js';
-import Options from './TheOptions.js';
-import Control from './TheControl.js';
+import Progress from '../Components/TheProgress.js';
+import Options from '../Components/TheOptions.js';
+import Control from '../Components/TheControl.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
 import { useState } from 'react'
-function App() {
+
+function Home() {
   const [selectedQuestion, setSelectedQuestion] = useState(0)
   return (
     <div className="App">
@@ -21,7 +21,7 @@ function App() {
         </div>
     </div>
   );
-}
+};
 
-export default App;
 
+export default Home;
