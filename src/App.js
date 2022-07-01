@@ -1,5 +1,5 @@
 import Home from './Pages/Home.js';
-import SingUp from './Pages/SingUp.js';
+import Login from './Pages/Login.js';
 import Main from './Assets/Style/Main.css';
 
 import { Routes, Route } from "react-router-dom";
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
         <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/singup" element={<SingUp/>}/>
+            <Route path="/login" element={<Login/>}/>
         </Routes>
     </div>
   );

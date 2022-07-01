@@ -18,34 +18,42 @@ function SingUp () {
 		<div className="container">
 			<div className="inputContainer">
 			<header>
-				Welcome  back!<br/> Please login/Signup to your account.
+				Welcome back!<br/> Please login/Signup to your account.
 			</header>
 				<form onSubmit={newUser}>
+				<label htmlFor="email">
 				    <div className="inputContent">
 				        <span></span>
 					    <div className="inputBox">
-					    	<label htmlFor="email">Email Address</label>
+					    	<label>Email Address</label>
 					        <input type="text" id="email" value={email} onChange={e => setEmail(e.target.value)}/>
 					    </div>
 				    </div>
+				</label>
 				    <br/>
+				<label htmlFor="password">    
 				    <div className="inputContent">
 				        <span></span>
 					    <div className="inputBox">
-					   	    <label htmlFor="password">Password</label>
+					   	    <label>Password</label>
 					        <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)}/>
 					    </div>
 				    </div>
-				    <button type="submit">Send</button>
+				</label>    
+			        <div className="singInContent">
+			    	    <div className="remanberMeContent">Remember Me</div>
+			    	    <Link className="forgotPassword" to="/forgotpassword">forgot Password?</Link>
+			        </div>
+			        <div className="loginAndSingUpContent">
+			    	    <button>Login</button>
+			    	    <button type="submit">Signup</button>
+			        </div>
 			    </form>
-			    <div className="singInContent">
-			    	<div className="remanberMeContent">Remember Me</div>
-			    	<Link className="forgotPassword" to="/forgotpassword">forgot Password?</Link>
-			    </div>
-			    <div className="loginAndSingUpContent">
-			    	<button>Login</button>
-			    	<button>Signup</button>
-			    </div>
+			   <div className="loginWithsocialMedia">
+			        <p>Or login with</p>
+			        <p>Facebook</p>
+			        <p>Google</p>
+			   </div> 
 			</div>
 		</div>
 	)
