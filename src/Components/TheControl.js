@@ -1,4 +1,5 @@
 import Time from '../Assets/Icons/Time.svg';
+import { singUp } from '../authentication.js';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 import { useState, useLayoutEffect } from 'react'
@@ -32,12 +33,20 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 		        skipButtonDisabled: false,
 	        });
     	}
+    	console.log('test')
     }, [selectedQuestion])
+
+    const newUser = () => {
+    	
+    }
 
 
 	return (
 		<div className="controlContent">
-			<button className={'previous button ' + hiddenButton.previousButton} onClick={() => setSelectedQuestion(selectedQuestion -= 1)} disabled={hiddenButton.previousButtonDisabled}>
+			<button 
+			    className={'previous button ' + hiddenButton.previousButton} 
+			    onClick={() => setSelectedQuestion(selectedQuestion -= 1)} 
+			    disabled={hiddenButton.previousButtonDisabled}>
 			    <Arrow className="arrowIcon"/>
 			    Previous
 			</button>
@@ -45,11 +54,15 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 			    <img src={Time} draggable="false"/>
 			</span>
 			<div>
-				<button className="next button" onClick={() => setSelectedQuestion(selectedQuestion += 1)}>
-				    Next
-				    <Arrow className="arrowIcon"/>				    
+				<button 
+				    className="next button"
+				    onClick={() => setSelectedQuestion(selectedQuestion += 1), newUser()}>
+				    {selectedQuestion == 5 ? 'finis': 'Next'}
+				    {selectedQuestion == 5 ?  null: <Arrow className="arrowIcon"/>}		    
 				</button>
-				<button className={'skip button ' + hiddenButton.skipButton} onClick={() => setSelectedQuestion(selectedQuestion += 1)} disabled={hiddenButton.skipButtonDisabled}>
+				<button className={'skip button ' + hiddenButton.skipButton} 
+				    onClick={() => setSelectedQuestion(selectedQuestion += 1)} 
+				    disabled={hiddenButton.skipButtonDisabled}>
 				    Skip
 				    <Skip/>
 				</button>
