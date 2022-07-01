@@ -250,7 +250,15 @@
 .inputContainer {
 	width: 424px;
 	height: 100%;
-	background-color: red;
+	padding: 40px 0 0 37px;
+}
+
+.inputContainer header {
+	width: 240px;
+	height: 35px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 45px;
 }
 
 .inputContainer .inputContent {
@@ -258,19 +266,94 @@
 	width: 347px;
 	height: 42px;
 	border: 1px solid #C1BBBB;
-	background-color: red;
+	border-left: none;
 }
 
 .inputContent span {
 	width: 2px;
 	height: 100%;
-	background-color: black;
+	background-color: var(--brandColor);;
 }
 
-.inputContent input {
+.inputBox {
+	margin-left: 14px;
+}
+
+.inputBox label {
+	font-size: 10px;
+	font-weight: 400;
+	font-family: var(--secondFont);
+	color: rgba(0, 0, 0, 0.61);
+}
+
+.inputBox input {
 	display: inline-block;
 	width: calc(100% - 2px);
-	height: 100%;
-	background-color:blue;
+	height: auto;
+	color: var(--brandColor);
 }
 
+
+
+.inputContainer .singInContent {
+	position: relative;
+	display: inline-flex;
+	justify-content: space-between;
+	width: 347px;
+	margin-top: 20px;
+	color: red;
+}
+
+.singInContent .remanberMeContent {
+	display: inline-flex;
+	align-items: center;
+	padding-left: 14px;
+	width: auto;
+	height: auto;
+}
+
+.remanberMeContent:before {
+	position: absolute;
+	left: 0%;
+	content: '';
+	width: 8.71px;
+	height: 8.71px;
+	border: 0.58px solid #B4B4B4;
+}
+
+
+.remanberMeContent, .forgotPassword {
+	font-size: 10px;
+	font-weight: 400;
+	font-family: var(--secondFont);
+	color: rgba(0, 0, 0, 0.61);
+}
+
+.inputContainer .loginAndSingUpContent {
+	width: auto;
+	height: auto;
+	margin-top: 47px;
+}
+
+.loginAndSingUpContent button {
+	width: 71px;
+	height: 37px;
+	font-size: 12px;
+	font-weight: 500;
+	font-family: var(--primaryFont);
+	cursor: pointer;
+}
+
+.loginAndSingUpContent button:first-child {
+	background-color: var(--brandColor);
+	box-shadow: 0px 10px 23px -6px #FBE18F;
+	color: #ffffff;
+}
+
+.loginAndSingUpContent button:last-child {
+	border: 0.58px solid var(--brandColor);
+	background-color: #ffffff;
+	box-shadow: 0px 10px 23px -6px #FBE18F;
+	margin-left: 29px;
+	color: var(--brandColor);
+}
