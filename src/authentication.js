@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyBlP6jZKOSajnt8sbWYtERXXa7yiMwMmbA',
-    authDomain: 'quiz-app-bd94d.firebaseapp.com',
-    projectId: 'quiz-app-bd94d',
-    storageBucket: 'quiz-app-bd94d.appspot.com',
-    messagingSenderId: '855702732053',
-    appId: '1:855702732053:web:056863e486a56db36e3d1c ',
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MASSAGOING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
