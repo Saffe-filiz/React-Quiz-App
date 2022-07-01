@@ -244,3 +244,33 @@
 .hiddenContent {
 	visibility: hidden;
 }
+
+
+
+.inputContainer {
+	width: 424px;
+	height: 100%;
+	background-color: red;
+}
+
+.inputContainer .inputContent {
+	display: inline-flex;
+	width: 347px;
+	height: 42px;
+	border: 1px solid #C1BBBB;
+	background-color: red;
+}
+
+.inputContent span {
+	width: 2px;
+	height: 100%;
+	background-color: black;
+}
+
+.inputContent input {
+	display: inline-block;
+	width: calc(100% - 2px);
+	height: 100%;
+	background-color:blue;
+}
+

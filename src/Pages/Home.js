@@ -8,7 +8,7 @@ import { useState } from 'react'
 function Home() {
   const [selectedQuestion, setSelectedQuestion] = useState(0)
   return (
-    <div className="App">
+    <div >
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}} >
             <Progress questLength={5}/>
             <div className="questContent">
