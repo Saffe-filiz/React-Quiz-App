@@ -11,31 +11,29 @@ function SingUp () {
 	const [saveUser, setSaveUser] = useState(false);
 
 	useEffect(() => {
-		let store = localStorage;
-		let userSave = store.getItem("userSave");
+		let userSave = localStorage.getItem("userSave");
 		if(!userSave) return;
-		setEmail(store.getItem("userEmail"))
-		setPassword(store.getItem("userPassword"))
-		setSaveUser(userSave)
+		setEmail(localStorage.getItem("userEmail"))
+		setPassword(localStorage.getItem("userPassword"))
+		//setSaveUser(userSave)
 		
 	}, []);
 
     const newUserWithEmailAndPassword = (e) => {
     	e.preventDefault();
+    	saveUserToLcalStroage();
     	singUpWithEmailAndPassword(email, password);
-    	saveUserToLcalStroage()
     	setEmail('')
     	setPassword('')
     }
 
     const login = () => {
-    	if(saveUser){
-    		saveUserToLcalStroage()
-    	}
+    	saveUserToLcalStroage()
     	loginWithEmailAndPassword(email, password)
     }
 
     const saveUserToLcalStroage = () => {
+    	if(!saveUser) return;
         localStorage.setItem('userEmail', email)
         localStorage.setItem('userPassword', password)	
         localStorage.setItem('userSave', saveUser)	
