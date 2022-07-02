@@ -2,13 +2,14 @@ import FormInput from '../Components/FormInput.js';
 import Check from '../Assets/Icons/Check.svg'
 import Group from '../Assets/Images/Group.jpg'
 import { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword } from '../Authentication.js';
 
 function SingUp () {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [saveUser, setSaveUser] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		let userSave = localStorage.getItem("userSave");
@@ -25,11 +26,13 @@ function SingUp () {
     	singUpWithEmailAndPassword(email, password);
     	setEmail('')
     	setPassword('')
+    	navigate("/", { replace: true });
     }
 
     const login = () => {
     	saveUserToLcalStroage()
     	loginWithEmailAndPassword(email, password)
+    	navigate("/", { replace: true });
     }
 
     const saveUserToLcalStroage = () => {
