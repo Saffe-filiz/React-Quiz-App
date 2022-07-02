@@ -1,25 +1,44 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom";
-import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword } from '../Authentication.js';
 import FormInput from '../Components/FormInput.js';
 import Check from '../Assets/Icons/Check.svg'
 import Group from '../Assets/Images/Group.jpg'
+import { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
+import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword } from '../Authentication.js';
 
 function SingUp () {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [rememberMe, setRememberMe] = useState(true);
+	const [saveUser, setSaveUser] = useState(false);
+
+	useEffect(() => {
+		let store = localStorage;
+		let userSave = store.getItem("userSave");
+		if(!userSave) return;
+		setEmail(store.getItem("userEmail"))
+		setPassword(store.getItem("userPassword"))
+		setSaveUser(userSave)
+		
+	}, []);
 
     const newUserWithEmailAndPassword = (e) => {
     	e.preventDefault();
     	singUpWithEmailAndPassword(email, password);
+    	saveUserToLcalStroage()
     	setEmail('')
     	setPassword('')
     }
 
     const login = () => {
-
+    	if(saveUser){
+    		saveUserToLcalStroage()
+    	}
     	loginWithEmailAndPassword(email, password)
+    }
+
+    const saveUserToLcalStroage = () => {
+        localStorage.setItem('userEmail', email)
+        localStorage.setItem('userPassword', password)	
+        localStorage.setItem('userSave', saveUser)	
     }
 
     const signupOrLoginWithSocialMedie = ( value ) => value ? loginWidthGoogleAccount(): loginnWidthFacebookAccount() 
@@ -46,14 +65,14 @@ function SingUp () {
 			        <div className="singInContent">
 			    	    <div className="remanberMeContent">
 			    	         <span 
-			    	         className={rememberMe ? 'isActive': 'inValid'} 
+			    	         className={saveUser ? 'isActive': 'inValid'} 
 			    	         style={{backgroundImage: `url(${Check})`}}></span>
 			    	    	<label htmlFor="remember">Remember Me</label>
 			    	    	<input 
 			    	    	type="checkbox" 
 			    	    	id="remember" 
-			    	    	value={rememberMe} 
-			    	    	onChange={e => setRememberMe(e.target.checked)}/>
+			    	    	value={saveUser} 
+			    	    	onChange={e => setSaveUser(e.target.checked)}/>
 			    	    </div>
 			    	    <Link className="forgotPassword" to="/forgotpassword">Forgot Password?</Link>
 			        </div>

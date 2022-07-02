@@ -351,8 +351,8 @@
 .remanberMeContent .inValid {
 	position: absolute;
 	left: 0%;
-	width: 8.71px;
-	height: 8.71px;
+	width: 10px;
+	height: 10px;
 	border: 0.58px solid #B4B4B4;
 }
 
@@ -361,8 +361,8 @@
 	content: 'dasd';
 	position: absolute;
 	left: 0%;
-	width: 8.71px;
-	height: 8.71px;
+	width: 10px;
+	height: 10px;
 	border: 0.58px solid  var(--brandColor);
 	background-color: var(--brandColor);
 }
