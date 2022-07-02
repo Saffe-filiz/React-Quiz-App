@@ -221,6 +221,8 @@
 }
 
 .controlContent .next {
+	width: 76px;
+	height: 34px;
 	color: #ffffff;
 	background-color: var(--brandColor);
 	box-shadow: 0px 5px 23px -6px #FBE18F;
@@ -316,6 +318,7 @@
 	height: auto;
 }
 
+
 .remanberMeContent:before {
 	position: absolute;
 	left: 0%;
@@ -324,6 +327,15 @@
 	height: 8.71px;
 	border: 0.58px solid #B4B4B4;
 }
+
+.remanberMeContent input[type="checkbox"] {
+	display: none;
+}
+
+.remanberMeContent input[type="checkbox"]:checked + label  {
+	background-color: red;
+}
+
 
 
 .remanberMeContent, .forgotPassword {

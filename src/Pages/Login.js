@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
-import { singUp } from '../authentication.js';
+import { singUp, singInWidthGoogle, singInWidthFacebook } from '../authentication.js';
+import FormInput from '../Components/FormInput.js';
 
 function SingUp () {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [rememberMe, setRememberMe] = useState(false);
 
     const newUser = (e) => {
     	e.preventDefault();
@@ -14,6 +16,8 @@ function SingUp () {
     	setPassword('')
     }
 
+    const newUserWithSocialMedia = ( value ) => value ? singInWidthGoogle(): singInWidthFacebook() 
+
 	return (
 		<div className="container">
 			<div className="inputContainer">
@@ -21,27 +25,13 @@ function SingUp () {
 				Welcome back!<br/> Please login/Signup to your account.
 			</header>
 				<form onSubmit={newUser}>
-				<label htmlFor="email">
-				    <div className="inputContent">
-				        <span></span>
-					    <div className="inputBox">
-					    	<label>Email Address</label>
-					        <input type="text" id="email" value={email} onChange={e => setEmail(e.target.value)}/>
-					    </div>
-				    </div>
-				</label>
-				    <br/>
-				<label htmlFor="password">    
-				    <div className="inputContent">
-				        <span></span>
-					    <div className="inputBox">
-					   	    <label>Password</label>
-					        <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)}/>
-					    </div>
-				    </div>
-				</label>    
+				    <FormInput  title={'Email Address'} type={'email'} value={email} setValue={setEmail}/>
+				    <FormInput  title={'Password'} type={'password'} value={password} setValue={setPassword}/>
 			        <div className="singInContent">
-			    	    <div className="remanberMeContent">Remember Me</div>
+			    	    <div className="remanberMeContent">
+			    	    	<label>Remember Me</label>
+			    	    	<input type="checkbox" id="remember" value={rememberMe} onChange={e => setRememberMe(e.target.checked)}/>
+			    	    </div>
 			    	    <Link className="forgotPassword" to="/forgotpassword">forgot Password?</Link>
 			        </div>
 			        <div className="loginAndSingUpContent">
@@ -51,8 +41,8 @@ function SingUp () {
 			    </form>
 			   <div className="loginWithsocialMedia">
 			        <p>Or login with</p>
-			        <p>Facebook</p>
-			        <p>Google</p>
+			        <p onClick={() => newUserWithSocialMedia(false)}>Facebook</p>
+			        <p onClick={() => newUserWithSocialMedia(true)}>Google</p>
 			   </div> 
 			</div>
 		</div>

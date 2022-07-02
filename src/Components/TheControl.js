@@ -1,5 +1,4 @@
 import Time from '../Assets/Icons/Time.svg';
-import { singUp } from '../authentication.js';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 import { useState, useLayoutEffect } from 'react'
@@ -36,11 +35,6 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     	console.log('test')
     }, [selectedQuestion])
 
-    const newUser = () => {
-    	
-    }
-
-
 	return (
 		<div className="controlContent">
 			<button 
@@ -56,8 +50,8 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 			<div>
 				<button 
 				    className="next button"
-				    onClick={() => setSelectedQuestion(selectedQuestion += 1), newUser()}>
-				    {selectedQuestion == 5 ? 'finis': 'Next'}
+				    onClick={() => setSelectedQuestion(selectedQuestion += 1)}>
+				    {selectedQuestion == 5 ? 'Finis': 'Next'}
 				    {selectedQuestion == 5 ?  null: <Arrow className="arrowIcon"/>}		    
 				</button>
 				<button className={'skip button ' + hiddenButton.skipButton} 
