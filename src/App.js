@@ -1,5 +1,6 @@
 import Home from './Pages/Home.js';
 import Login from './Pages/Login.js';
+import Private from './Pages/PrivateRouter.js';
 import Main from './Assets/Style/Main.css';
 
 import { Routes, Route } from "react-router-dom";
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
         <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/login" element={<Login/>}/>
+            <Route path="/login" element={<Private><Login/></Private>}/>
         </Routes>
     </div>
   );

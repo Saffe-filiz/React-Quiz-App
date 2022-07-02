@@ -31,15 +31,6 @@ export function singUpWithEmailAndPassword(email, password){
 
 export function loginWithEmailAndPassword (email, password) {
     signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
 }
 
 
@@ -47,37 +38,9 @@ export function loginWithEmailAndPassword (email, password) {
 export function loginWidthGoogleAccount () {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-    .then((result) => {
- 
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-  });
 }
 
 export function loginnWidthFacebookAccount () {
     const provider = new FacebookAuthProvider();
-signInWithPopup(auth, provider)
-  .then((result) => {
-    const user = result.user;
-
-    const credential = FacebookAuthProvider.credentialFromResult(result);
-    const accessToken = credential.accessToken;
-
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = FacebookAuthProvider.credentialFromError(error);
-
-    // ...
-  });
+    signInWithPopup(auth, provider)
 }

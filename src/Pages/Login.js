@@ -12,10 +12,10 @@ function SingUp () {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		let userSave = localStorage.getItem("userSave");
+		let userSave = localStorage.getItem("saveUser");
 		if(!userSave) return;
-		setEmail(localStorage.getItem("userEmail"))
-		setPassword(localStorage.getItem("userPassword"))
+		setEmail(localStorage.getItem("email"))
+		setPassword(localStorage.getItem("password"))
 		//setSaveUser(userSave)
 		
 	}, []);
@@ -37,12 +37,15 @@ function SingUp () {
 
     const saveUserToLcalStroage = () => {
     	if(!saveUser) return;
-        localStorage.setItem('userEmail', email)
-        localStorage.setItem('userPassword', password)	
-        localStorage.setItem('userSave', saveUser)	
+        localStorage.setItem('email', email)
+        localStorage.setItem('password', password)	
+        localStorage.setItem('saveUser', saveUser)	
     }
 
-    const signupOrLoginWithSocialMedie = ( value ) => value ? loginWidthGoogleAccount(): loginnWidthFacebookAccount() 
+    const signupOrLoginWithSocialMedie = ( value ) => {
+    	value ? loginWidthGoogleAccount(): loginnWidthFacebookAccount();
+    	navigate("/", { replace: true }); 
+    }
 
 	return (
 		<div className="container">
