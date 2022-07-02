@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword } from '../Authentication.js';
 import FormInput from '../Components/FormInput.js';
 import Check from '../Assets/Icons/Check.svg'
+import Group from '../Assets/Images/Group.jpg'
 
 function SingUp () {
 	const [email, setEmail] = useState('');
@@ -25,18 +26,34 @@ function SingUp () {
 
 	return (
 		<div className="container">
+		<div className="loginContainer" style={{backgroundImage: `url(${Group})`}}>
 			<div className="inputContainer">
 			<header>
 				Welcome back!<br/> Please login/Signup to your account.
 			</header>
 				<form onSubmit={newUserWithEmailAndPassword}>
-				    <FormInput title={'Email Address'} type={'email'} value={email} setValue={setEmail} placeholder={'sample@mail.com'}/>
-				    <FormInput title={'Password'} type={'password'} value={password} setValue={setPassword} placeholder={'********'}/>
+				    <FormInput 
+				    title={'Email Address'} 
+				    type={'email'} value={email} 
+				    setValue={setEmail} 
+				    placeholder={'sample@mail.com'}/>
+				    <FormInput 
+				    title={'Password'} 
+				    type={'password'} 
+				    value={password} 
+				    setValue={setPassword} 
+				    placeholder={'********'}/>
 			        <div className="singInContent">
 			    	    <div className="remanberMeContent">
-			    	         <span className={rememberMe ? 'isActive': 'inValid'} style={{backgroundImage: `url(${Check})`}}></span>
+			    	         <span 
+			    	         className={rememberMe ? 'isActive': 'inValid'} 
+			    	         style={{backgroundImage: `url(${Check})`}}></span>
 			    	    	<label htmlFor="remember">Remember Me</label>
-			    	    	<input type="checkbox" id="remember" value={rememberMe} onChange={e => setRememberMe(e.target.checked)}/>
+			    	    	<input 
+			    	    	type="checkbox" 
+			    	    	id="remember" 
+			    	    	value={rememberMe} 
+			    	    	onChange={e => setRememberMe(e.target.checked)}/>
 			    	    </div>
 			    	    <Link className="forgotPassword" to="/forgotpassword">Forgot Password?</Link>
 			        </div>
@@ -51,6 +68,7 @@ function SingUp () {
 			        <p onClick={() => signupOrLoginWithSocialMedie(true)}>Google</p>
 			   </div> 
 			</div>
+		</div>
 		</div>
 	)
 }
