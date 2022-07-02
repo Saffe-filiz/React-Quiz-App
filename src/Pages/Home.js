@@ -9,7 +9,7 @@ function Home() {
   const [selectedQuestion, setSelectedQuestion] = useState(0)
   return (
     <div >
-        <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}} >
+        <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Progress questLength={5}/>
             <div className="questContent">
                 <h1>An interface design application that runs in the browser with team-based collaborative design projects{selectedQuestion}</h1>

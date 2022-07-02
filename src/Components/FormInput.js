@@ -1,12 +1,12 @@
-function FormInput ({title, type, value, setValue }) {
+function FormInput ({title, type, placeholder, value, setValue }) {
 	return (
 		<>
-		    <label htmlFor={title}>
+		    <label className="xxx" htmlFor={type}>
 			    <div className="inputContent">
 				   <span></span>
 					<div className="inputBox">
-					    <label>{title}</label>
-					    <input type={type} id={title} value={value} onChange={ e => setValue(value = e.target.value)}/>
+					    <label >{title}</label>
+					    <input type={type} id={type} value={value} placeholder={placeholder} onChange={ e => setValue(value = e.target.value)}/>
 					</div>
 				</div>
 			</label>

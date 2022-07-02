@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -15,7 +15,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 
-export function singUp(email, password){
+export function singUpWithEmailAndPassword(email, password){
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
@@ -28,8 +28,22 @@ export function singUp(email, password){
 };
 
 
+export function loginWithEmailAndPassword (email, password) {
+    signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+}
 
-export function singInWidthGoogle () {
+
+
+export function loginWidthGoogleAccount () {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
     .then((result) => {
@@ -46,7 +60,7 @@ export function singInWidthGoogle () {
   });
 }
 
-export function singInWidthFacebook () {
+export function loginnWidthFacebookAccount () {
     const provider = new FacebookAuthProvider();
 signInWithPopup(auth, provider)
   .then((result) => {

@@ -268,22 +268,32 @@
 }
 
 .inputContainer .inputContent {
+	position: relative;
 	display: inline-flex;
 	width: 347px;
 	height: 42px;
 	border: 1px solid #C1BBBB;
-	border-left: none;
 }
 
-.inputContent span {
+.inputContent:before {
+	position: absolute;
+	display: none;
+	content: '';
 	width: 2px;
 	height: 100%;
-	background-color: var(--brandColor);;
+	background-color: var(--brandColor);
+}
+
+
+.xxx:focus-within .inputContent:before {
+	display: inline-block;
 }
 
 .inputBox {
 	margin-left: 14px;
 }
+
+
 
 .inputBox label {
 	font-size: 10px;
@@ -292,13 +302,25 @@
 	color: rgba(0, 0, 0, 0.61);
 }
 
+
 .inputBox input {
 	display: inline-block;
-	width: calc(100% - 2px);
+	width: 300px;
 	height: auto;
+	font-size: 11px;
+	font-weight: 500;
+	font-family: var(--secondFont);
 	color: var(--brandColor);
+	background-color: transparent;
 }
 
+
+.inputBox input::placeholder {
+	font-size: 11px;
+	font-weight: 500;
+	font-family: var(--secondFont);
+	color: var(--brandColor);
+}
 
 
 .inputContainer .singInContent {
@@ -319,26 +341,31 @@
 }
 
 
-.remanberMeContent:before {
+.remanberMeContent .inValid {
 	position: absolute;
 	left: 0%;
-	content: '';
 	width: 8.71px;
 	height: 8.71px;
 	border: 0.58px solid #B4B4B4;
+}
+
+.remanberMeContent .isActive {
+	display: inline-block;
+	content: 'dasd';
+	position: absolute;
+	left: 0%;
+	width: 8.71px;
+	height: 8.71px;
+	border: 0.58px solid  var(--brandColor);
+	background-color: var(--brandColor);
 }
 
 .remanberMeContent input[type="checkbox"] {
 	display: none;
 }
 
-.remanberMeContent input[type="checkbox"]:checked + label  {
-	background-color: red;
-}
 
-
-
-.remanberMeContent, .forgotPassword {
+.remanberMeContent, .forgotPassword, .remanberMeContent label {
 	font-size: 10px;
 	font-weight: 400;
 	font-family: var(--secondFont);
@@ -386,9 +413,11 @@
 	font-weight: 700;
 	font-family: var(--secondFont);
 	color: var(--brandColor);
+	cursor: pointer;
 }
 
 .loginWithsocialMedia p:first-child {
 	color: #00000099;
 	font-weight: 400;
+	cursor: auto;
 }
