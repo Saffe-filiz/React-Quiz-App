@@ -4,12 +4,12 @@ import { createSlice } from '@reduxjs/toolkit';
 export const userStore = createSlice({
     name: 'userStore',
     initialState: {
-        user: '',
+        user: null,
     },
 
     reducers: {
   	    setUser (state, actions) {
-  	    	state.user = actions.payload;
+  	    	state.user = actions.payload || null;
   	    },
     }
 })

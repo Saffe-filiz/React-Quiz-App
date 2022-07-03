@@ -4,17 +4,18 @@ import Group from '../Assets/Images/Group.jpg'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { setUser } from '../Stores/userStore.js';
-import { useSelector, useDispatch } from 'react-redux'
-import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword } from '../Authentication.js';
+import { useDispatch } from 'react-redux'
+import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword, userIsLogin } from '../Authentication.js';
 
 
 
 function SingUp () {
-	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [saveUser, setSaveUser] = useState(false);
+
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	useEffect(() => {
 		let userSave = localStorage.getItem("saveUser");
@@ -25,25 +26,41 @@ function SingUp () {
 		
 	}, []);
 
-    const newUserWithEmailAndPassword = (e) => {
+	const isLogin = (user) => {
+        dispatch(setUser(user));
+        navigate("/", { replace: true });
+	}
+
+    const newUserWithEmailAndPassword = async (e) => {
     	e.preventDefault();
-    	saveUserToLcalStroage();
-    	singUpWithEmailAndPassword(email, password);
-    	setEmail('')
+    	try{
+    	    const user = await singUpWithEmailAndPassword(email, password);
+    	    saveUserToLcalStroage();
+    	    isLogin(user)
+    	}catch(error){
+    		console.log(error)
+    	}
+        setEmail('')
     	setPassword('')
-    	//navigate("/", { replace: true });
     }
 
     const login = async () => {
     	try {
-    		await loginWithEmailAndPassword(email, password);
-    		saveUserToLcalStroage()
-    		dispatch(setUser('adasdadsfsfsfdfsdfdasas'))
-    		navigate("/", { replace: true });
-        }
-        catch(error) {
+    		const user = await loginWithEmailAndPassword(email, password);
+    		saveUserToLcalStroage();
+    		isLogin(user)
+        }catch(error) {
         	console.log(error)
         }	
+    }
+
+    const signupOrLoginWithSocialMedie = async ( value ) => {
+    	try {
+    	    const user = value ? await loginWidthGoogleAccount(): await loginnWidthFacebookAccount();
+    	    isLogin(user)
+        }catch(error){
+        	console.log(error)
+        }
     }
 
     const saveUserToLcalStroage = () => {
@@ -51,11 +68,6 @@ function SingUp () {
         localStorage.setItem('email', email)
         localStorage.setItem('password', password)	
         localStorage.setItem('saveUser', saveUser)	
-    }
-
-    const signupOrLoginWithSocialMedie = ( value ) => {
-    	value ? loginWidthGoogleAccount(): loginnWidthFacebookAccount();
-    	navigate("/", { replace: true }); 
     }
 
 	return (
