@@ -1,6 +1,5 @@
-
-import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -11,36 +10,25 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_APP_ID,
 };
 
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
 
-export function singUpWithEmailAndPassword(email, password){
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user)
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
-
+export async function singUpWithEmailAndPassword(email, password){
+   await createUserWithEmailAndPassword(auth, email, password)
 };
 
-
-export function loginWithEmailAndPassword (email, password) {
-    signInWithEmailAndPassword(auth, email, password)
+export async function loginWithEmailAndPassword (email, password) {
+    await signInWithEmailAndPassword(auth, email, password)
 }
 
-
-
-export function loginWidthGoogleAccount () {
+export async function loginWidthGoogleAccount () {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
+    await signInWithPopup(auth, provider)
 }
 
-export function loginnWidthFacebookAccount () {
+export async function loginnWidthFacebookAccount () {
     const provider = new FacebookAuthProvider();
-    signInWithPopup(auth, provider)
+    await signInWithPopup(auth, provider)
 }

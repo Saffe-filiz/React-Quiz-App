@@ -3,9 +3,14 @@ import Check from '../Assets/Icons/Check.svg'
 import Group from '../Assets/Images/Group.jpg'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
+import { setUser } from '../Stores/userStore.js';
+import { useSelector, useDispatch } from 'react-redux'
 import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword } from '../Authentication.js';
 
+
+
 function SingUp () {
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [saveUser, setSaveUser] = useState(false);
@@ -26,13 +31,19 @@ function SingUp () {
     	singUpWithEmailAndPassword(email, password);
     	setEmail('')
     	setPassword('')
-    	navigate("/", { replace: true });
+    	//navigate("/", { replace: true });
     }
 
-    const login = () => {
-    	saveUserToLcalStroage()
-    	loginWithEmailAndPassword(email, password)
-    	navigate("/", { replace: true });
+    const login = async () => {
+    	try {
+    		await loginWithEmailAndPassword(email, password);
+    		saveUserToLcalStroage()
+    		dispatch(setUser('adasdadsfsfsfdfsdfdasas'))
+    		navigate("/", { replace: true });
+        }
+        catch(error) {
+        	console.log(error)
+        }	
     }
 
     const saveUserToLcalStroage = () => {
@@ -81,7 +92,7 @@ function SingUp () {
 			    	    <Link className="forgotPassword" to="/forgotpassword">Forgot Password?</Link>
 			        </div>
 			        <div className="loginAndSingUpContent">
-			    	    <button>Login</button>
+			    	    <button onClick={() => login()}>Login</button>
 			    	    <button type="submit" disabled={!email || !password}>Signup</button>
 			        </div>
 			    </form>
