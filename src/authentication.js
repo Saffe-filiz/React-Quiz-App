@@ -16,23 +16,23 @@ const auth = getAuth();
 
 
 export async function singUpWithEmailAndPassword(email, password){
-   const { user } = await createUserWithEmailAndPassword(auth, email, password);
-   return user;
+   await createUserWithEmailAndPassword(auth, email, password);
 };
 
 export async function loginWithEmailAndPassword (email, password) {
-    const { user } = await signInWithEmailAndPassword(auth, email, password);
-    return user;
+    await signInWithEmailAndPassword(auth, email, password);
 }
 
 export async function loginWidthGoogleAccount () {
     const provider = new GoogleAuthProvider();
-    const { user } = await signInWithPopup(auth, provider);
-    return user;
+    await signInWithPopup(auth, provider);
 }
 
 export async function loginnWidthFacebookAccount () {
     const provider = new FacebookAuthProvider();
-    const { user } = await signInWithPopup(auth, provider);
-    return user;
+    await signInWithPopup(auth, provider);
 };
+
+export async function currentUser () {
+    return await auth.currentUser;
+} 

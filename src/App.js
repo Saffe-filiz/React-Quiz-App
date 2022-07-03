@@ -1,7 +1,7 @@
 import Home from './Pages/Home.js';
 import Login from './Pages/Login.js';
 import Private from './Components/PrivateRouter.js';
-import Main from './Assets/Style/Main.css';
+import style from './Assets/Style/style.css';
 
 import { Routes, Route } from "react-router-dom";
 

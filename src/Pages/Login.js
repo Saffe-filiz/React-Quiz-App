@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { setUser } from '../Stores/userStore.js';
 import { useDispatch } from 'react-redux'
-import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword, userIsLogin } from '../Authentication.js';
+import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword, currentUser } from '../Authentication.js';
 
 
 
@@ -22,11 +22,11 @@ function SingUp () {
 		if(!userSave) return;
 		setEmail(localStorage.getItem("email"))
 		setPassword(localStorage.getItem("password"))
-		//setSaveUser(userSave)
 		
 	}, []);
 
-	const isLogin = (user) => {
+	const isLogin = async () => {
+		let user = await currentUser();
         dispatch(setUser(user));
         navigate("/", { replace: true });
 	}
@@ -36,7 +36,7 @@ function SingUp () {
     	try{
     	    const user = await singUpWithEmailAndPassword(email, password);
     	    saveUserToLcalStroage();
-    	    isLogin(user)
+    	    isLogin()
     	}catch(error){
     		console.log(error)
     	}
@@ -48,7 +48,7 @@ function SingUp () {
     	try {
     		const user = await loginWithEmailAndPassword(email, password);
     		saveUserToLcalStroage();
-    		isLogin(user)
+    		isLogin()
         }catch(error) {
         	console.log(error)
         }	
@@ -56,8 +56,8 @@ function SingUp () {
 
     const signupOrLoginWithSocialMedie = async ( value ) => {
     	try {
-    	    const user = value ? await loginWidthGoogleAccount(): await loginnWidthFacebookAccount();
-    	    isLogin(user)
+    	    value ? await loginWidthGoogleAccount(): await loginnWidthFacebookAccount();
+    	    isLogin()
         }catch(error){
         	console.log(error)
         }

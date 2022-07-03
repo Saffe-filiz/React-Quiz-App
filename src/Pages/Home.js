@@ -1,6 +1,7 @@
 import Progress from '../Components/TheProgress.js';
 import Options from '../Components/TheOptions.js';
 import Control from '../Components/TheControl.js';
+import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
 import { useState } from 'react'
@@ -10,6 +11,7 @@ function Home() {
   return (
     <div >
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
+            <Navigation/>
             <Progress questLength={5}/>
             <div className="questContent">
                 <h1>An interface design application that runs in the browser with team-based collaborative design projects{selectedQuestion}</h1>
