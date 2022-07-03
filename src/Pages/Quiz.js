@@ -11,7 +11,7 @@ function Home() {
   return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>
-            <Progress questLength={5}/>
+            {/*<Progress questLength={5}/>*/}
             <div className="questContent">
                 <h1>An interface design application that runs in the browser with team-based collaborative design projects{selectedQuestion}</h1>
             </div>

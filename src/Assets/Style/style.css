@@ -88,14 +88,14 @@
 
 .homeContent {
 	width: 424px;
-	height: 100%;
-	padding: 40px 0 0 37px;
+	height: 450px;
+	margin-top: 66px;
+	padding: 40px 0 0 103px;
 }
 
 .homeContent header {
 	width: 270px;
 	height: 131px;
-	margin: 0 auto;
 }
 
 .homeContent header h1 {
@@ -103,7 +103,41 @@
 	font-weight: 500;
 	font-family: var(--scondFont);
 	color: #333333;
+}
 
+.homeContent .subHeader {
+	display: flex;
+	align-items: center;
+	width: auto;
+	height: 26px;
+	margin: 38px 0 35px 0;
+	padding-left: 11px;
+	border-left: 1.2px solid #333333;
+}
+
+.subHeader p {
+	font-size: 14px;
+	font-weight: 500;
+	font-family: var(--scondFont);
+	color: #828282;
+}
+
+.homeContent .startQuiz {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	height: 37px;
+	cursor: pointer;
+	background-color: var(--brandColor);
+	box-shadow: 0px 10px 23px -7px #FBE18F;
+}
+
+.startQuiz a {
+	font-size: 14px;
+	font-weight: 500;
+	font-family: var(--primaryFont);
+    color: #ffffff;
 }
 
 /* PROGRESS BAR START */
