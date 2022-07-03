@@ -8,10 +8,10 @@ function Navigation () {
 		<div className="navigation">
 		    <div className="navigationContent">
 		    	<div>
-		    		<img src={Logo}/>
+		    		<img src={Logo} draggable="false"/>
 		    	</div>
 		    	<div>
-		    		{user ? <div><Link to="/login">Login</Link> </div>: <div></div>}
+		    		{user ? <Link className="loginButton" to="/login">Login</Link>: <div></div>}
 		    	</div>
 		    </div>
 		</div>
