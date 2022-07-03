@@ -5,10 +5,10 @@ function ChooseTopic () {
 	const [select, setSelect] = useState([])
 	const topics = ['TagBadge','TagBadge','TagBadge','TagBadge','TagBadge','TagBadge','TagBadge','TagBadge','TagBadge','TagBadge'];
 
-
-    const addTopic = (value) => select.includes(value) ? removeTopic(value) : setTopic(value)
-	const setTopic = (value) => setSelect(select => [...select, value]);
-	const removeTopic = (value) => setSelect(select.filter( topic => topic != value));
+    const isExist = value => select.includes(value);
+    const addTopic = value => isExist(value) ? removeTopic(value) : setTopic(value)
+	const setTopic = value => setSelect(select => [...select, value]);
+	const removeTopic = value => setSelect(select.filter( topic => topic != value));
 
 	return (
 		<div className="chooseTopicContent">
@@ -18,7 +18,7 @@ function ChooseTopic () {
 				<div className="choosToicSubTitle"><p>Select more than 5 topics to start quiz</p></div>
 				<div className="topic">
 					<ul>
-						{topics.map( (topic, index) => <li className={select.includes(index) ? 'isActive': ''}  onClick={() => addTopic(index)} key={index}>{topic} {select.includes(index) ? <span><img src={Close}/></span>: null}</li>)}
+						{topics.map( (topic, index) => <li className={isExist(index) ? 'isActive': ''}  onClick={() => addTopic(index)} key={index}>{topic} {isExist(index) ? <span><img src={Close}/></span>: null}</li>)}
 					</ul>
 				</div>
 				<button>Start Quiz</button>

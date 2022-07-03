@@ -166,6 +166,7 @@
 
 .choosingSubject img {
 	float: right;
+	cursor: pointer;
 }
 
 .choosingSubject header {
