@@ -21,6 +21,7 @@
 }
 
 .App {
+	position:relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -139,6 +140,29 @@
 	font-family: var(--primaryFont);
     color: #ffffff;
 }
+
+/* HOME CONTENT END */
+
+/* CHOOSE TOPIC START */
+
+.App .chooseTopicContent {
+	position:absolute;
+	display: inline-flex;
+	justify-content:center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background-color: #00000080;
+	z-index: 10;
+}
+
+.chooseTopicContent .choosingSubject {
+	width: 717px;
+	height: 414px;
+	background-color: #ffffff;
+}
+
+/* CHOOSE TOPIC END */
 
 /* PROGRESS BAR START */
 
