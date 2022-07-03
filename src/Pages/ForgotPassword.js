@@ -1,12 +1,18 @@
 import FormInput from '../Components/FormInput.js';
 import Group from '../Assets/Images/Group.jpg'
 import { useState } from 'react';
+import { sendPasswordResetMail } from '../Authentication.js';
 
 function ForgotPassword () {
 	const [email, setEmail] = useState('');
 
-	const sendPasswordEmail = () => {
-		console.log('test')
+	const sendResetPsswordEmail = (e) => {
+		e.preventDefault()
+		try{
+			sendPasswordResetMail(email)
+		}catch(error){
+			console.log(error)
+		}
 	};
 
 	return (
@@ -14,16 +20,17 @@ function ForgotPassword () {
 		    <div className="loginContainer" style={{backgroundImage: `url(${Group})`}}>
 			<div className="inputContainer">
 			    <header>
-				    Welcome back!<br/> Please login/Signup to your account.
+				   Please enter your email address.
 			    </header>
-				<form onSubmit={sendPasswordEmail}>
+				<form onSubmit={sendResetPsswordEmail}>
 				    <FormInput 
+				    focus={true}
 				    title={'Email Address'} 
 				    type={'email'} value={email} 
 				    setValue={setEmail} 
 				    placeholder={'sample@mail.com'}/>
 			        <div className="loginAndSingUpContent">
-			    	    <button type="submit">Send Mail</button>
+			    	    <button  type="submit">Send</button>
 			        </div>
 			    </form>
 			</div>

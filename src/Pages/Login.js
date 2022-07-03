@@ -79,6 +79,7 @@ function SingUp () {
 			</header>
 				<form onSubmit={newUserWithEmailAndPassword}>
 				    <FormInput 
+				    focus={true}
 				    title={'Email Address'} 
 				    type={'email'} value={email} 
 				    setValue={setEmail} 

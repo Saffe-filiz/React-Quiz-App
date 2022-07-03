@@ -1,4 +1,6 @@
-function FormInput ({title, type, placeholder, value, setValue }) {
+import { useRef, useEffect } from 'react'
+
+function FormInput ({focus, title, type, placeholder, value, setValue }) {
 	return (
 		<>
 		    <label className="xxx" htmlFor={type}>
@@ -6,7 +8,7 @@ function FormInput ({title, type, placeholder, value, setValue }) {
 				   <span></span>
 					<div className="inputBox">
 					    <label >{title}</label>
-					    <input type={type} id={type} value={value} placeholder={placeholder} onChange={ e => setValue(value = e.target.value)}/>
+					    <input autoFocus={focus} type={type} id={type} value={value} placeholder={placeholder} onChange={ e => setValue(value = e.target.value)}/>
 					</div>
 				</div>
 			</label>
