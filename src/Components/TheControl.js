@@ -1,7 +1,7 @@
 import Time from '../Assets/Icons/Time.svg';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
-import { useState, useLayoutEffect } from 'react'
+import { useState, useLayoutEffect, useRef, useEffect} from 'react'
 
 function Control({selectedQuestion, setSelectedQuestion}) {
 
@@ -11,6 +11,8 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 		skipButton: '',
 		skipButtonDisabled: false,
 	});
+
+	  const [timer, setTimer] = useState(0);
     
     useLayoutEffect(() => {
     	if(selectedQuestion >= 5) {
@@ -32,8 +34,14 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 		        skipButtonDisabled: false,
 	        });
     	}
-    	console.log('test')
-    }, [selectedQuestion])
+    }, [selectedQuestion]);
+    
+    
+    useEffect(() => {
+        let time = setInterval(() => setTimer(timer+1), 1000);
+        if(timer < 60) return;
+        return ()=> clearInterval(time);
+    }, [timer])
 
 	return (
 		<div className="controlContent">
@@ -45,6 +53,7 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 			    Previous
 			</button>
 			<span>
+			    {timer}
 			    <img src={Time} draggable="false"/>
 			</span>
 			<div>

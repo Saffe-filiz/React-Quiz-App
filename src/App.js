@@ -7,11 +7,13 @@ import ChooseTopic from './Components/TheChooseTopic.js';
 import style from './Assets/Style/style.css';
 
 import { Routes, Route } from "react-router-dom";
+import { useState } from 'react'
 
 function App() {
+  const [showPopUp, setShowPopUp] = useState(false);
   return (
     <div className="App">
-      <ChooseTopic/>
+      {showPopUp ? <ChooseTopic showPopUp={showPopUp} setShowPopUp={setShowPopUp}/>: null}
         <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/quiz" element={<Quiz/>}/>
