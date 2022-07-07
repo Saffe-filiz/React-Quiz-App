@@ -43,7 +43,5 @@ export  function  sendPasswordResetMail  (email) {
 
 
 export async function userSingOut () {
-    console.log('logout')
     await signOut(auth)
-    console.log(auth.currentUser)
 }
