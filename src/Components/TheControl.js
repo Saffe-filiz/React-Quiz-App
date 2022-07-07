@@ -51,9 +51,8 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 			    <Arrow className="arrowIcon"/>
 			    Previous
 			</button>
-			<span>
+			<span className="quizTimer" style={{backgroundImage: `url(${Time})`}} draggable="false">
 			    {timer}
-			    <img src={Time} draggable="false"/>
 			</span>
 			<div>
 				<button 
