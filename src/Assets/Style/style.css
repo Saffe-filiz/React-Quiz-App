@@ -134,7 +134,7 @@
 	box-shadow: 0px 10px 23px -7px #FBE18F;
 }
 
-.startQuiz a {
+.startQuiz span {
 	font-size: 14px;
 	font-weight: 500;
 	font-family: var(--primaryFont);

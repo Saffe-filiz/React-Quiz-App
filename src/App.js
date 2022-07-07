@@ -10,12 +10,14 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
 
 function App() {
-  const [showPopUp, setShowPopUp] = useState(true);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [quizTopics, setQuizTopics] = useState();
+
   return (
     <div className="App">
-      {showPopUp ? <ChooseTopic showPopUp={showPopUp} setShowPopUp={setShowPopUp}/>: null}
+      {showPopUp ? <ChooseTopic setShowPopUp={setShowPopUp} setQuizTopics={setQuizTopics} />: null}
         <Routes>
-            <Route path="/" element={<Home/>}/>
+            <Route path="/" element={<Home setShowPopUp={setShowPopUp}/>}/>
             <Route path="/quiz" element={<Quiz/>}/>
             <Route path="/login" element={<Private><Login/></Private>}/>
             <Route path="/forgotpassword" element={<Private><ForgotPassword/></Private>}/>

@@ -1,9 +1,7 @@
 import Group from '../Assets/Images/Group.jpg'
 import Navigation from '../Components/TheNavigation.js';
-import { Link } from "react-router-dom";
 
-
-function Home () {
+function Home ({setShowPopUp}) {
 
 	return (
 		<div className="container">
@@ -17,7 +15,7 @@ function Home () {
 			    	<p>We help you prepare for exams and quizes </p>
 			    </div>
 				<div className="startQuiz">
-					<Link  to="/quiz">Start Salving</Link>
+					<span onClick={() => setShowPopUp(true)}>Start Salving</span>
 				</div>
 			</div>
 		    </div>
