@@ -12,8 +12,6 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 		skipButtonDisabled: false,
 	});
 
-	  const [timer, setTimer] = useState(0);
-    
     useLayoutEffect(() => {
     	if(selectedQuestion >= 5) {
     		setHiddenButton({
@@ -36,11 +34,12 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     	}
     }, [selectedQuestion]);
     
-    
+
+    const [timer, setTimer] = useState(0);
+
     useEffect(() => {
-        let time = setInterval(() => setTimer(timer+1), 1000);
-        if(timer < 60) return;
-        return ()=> clearInterval(time);
+        let time = setInterval(() => setTimer(preTimer => preTimer + 1), 1000);
+        return () => clearInterval(time);
     }, [timer])
 
 	return (
