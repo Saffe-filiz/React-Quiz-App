@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -37,6 +37,13 @@ export async function currentUser () {
     return await auth.currentUser;
 } 
 
-export function sendPasswordResetMail (email) {
+export  function  sendPasswordResetMail  (email) {
     sendPasswordResetEmail(auth, email)
+}
+
+
+export async function userSingOut () {
+    console.log('logout')
+    await signOut(auth)
+    console.log(auth.currentUser)
 }

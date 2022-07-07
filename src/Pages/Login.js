@@ -18,15 +18,18 @@ function SingUp () {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		let userSave = localStorage.getItem("saveUser");
-		if(!userSave) return;
-		setEmail(localStorage.getItem("email"))
-		setPassword(localStorage.getItem("password"))
-		
+		try{
+			let {userEmail , userPassword} = JSON.parse(localStorage.getItem("userLoginInfo"));
+			setEmail(userEmail);
+		    setPassword(userPassword);
+		}catch(error){
+			console.log(error)
+		}
 	}, []);
 
 	const isLogin = async () => {
 		let user = await currentUser();
+		console.log(user)
         dispatch(setUser(user));
         navigate("/", { replace: true });
 	}
@@ -65,9 +68,11 @@ function SingUp () {
 
     const saveUserToLcalStroage = () => {
     	if(!saveUser) return;
-        localStorage.setItem('email', email)
-        localStorage.setItem('password', password)	
-        localStorage.setItem('saveUser', saveUser)	
+    	let user = {
+    		userEmail: email,
+    		userPassword: password,
+    	}
+    	localStorage.setItem('userLoginInfo', JSON.stringify(user))
     }
 
 	return (
