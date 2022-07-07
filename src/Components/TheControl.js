@@ -1,7 +1,7 @@
 import Time from '../Assets/Icons/Time.svg';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
-import { useState, useLayoutEffect, useRef, useEffect} from 'react'
+import { useState, useLayoutEffect, useEffect} from 'react'
 
 function Control({selectedQuestion, setSelectedQuestion}) {
 

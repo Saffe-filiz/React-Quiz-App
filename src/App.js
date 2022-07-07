@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
 
 function App() {
-  const [showPopUp, setShowPopUp] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(true);
   return (
     <div className="App">
       {showPopUp ? <ChooseTopic showPopUp={showPopUp} setShowPopUp={setShowPopUp}/>: null}

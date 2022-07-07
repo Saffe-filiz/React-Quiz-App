@@ -10,12 +10,14 @@ function ChooseTopic ({showPopUp, setShowPopUp}) {
 	const selectTopic = value => setSelect(select => [...select, value]);
 	const removeTopic = value => setSelect(select.filter( topic => topic != value));
 
-
+    const closeModal = () => {
+    	 setShowPopUp(false)
+    }
 
 	return (
 		<div className="chooseTopicContent" onClick={() => setShowPopUp(false)}>
-			<div className="choosingSubject">
-				<img src={Close} onClick={() => setShowPopUp(true)}/>
+			<div className="choosingSubject" onClick={(e) => e.stopPropagation()}>
+				<img src={Close} onClick={() => setShowPopUp(false)}/>
 				<header><h1>Choose your favorite topic</h1></header>
 				<div className="choosToicSubTitle"><p>Select more than 5 topics to start quiz</p></div>
 				<div className="topic">
