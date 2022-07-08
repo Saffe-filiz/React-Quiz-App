@@ -4,10 +4,13 @@ import Control from '../Components/TheControl.js';
 import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
+
 import { useState } from 'react'
 
-function Home() {
-  const [selectedQuestion, setSelectedQuestion] = useState(0)
+function Quiz() {
+
+const [selectedQuestion, setSelectedQuestion] = useState(0);
+
   return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>
@@ -24,4 +27,4 @@ function Home() {
 };
 
 
-export default Home;
+export default Quiz;

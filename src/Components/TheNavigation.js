@@ -30,7 +30,7 @@ function Navigation () {
 		<div className="navigation">
 		    <div className="navigationContent">
 		    	<div>
-		    		<img src={Logo} draggable="false"/>
+		    		<Link to="/"><img src={Logo} draggable="false"/></Link>
 		    	</div>
 		    	<div>
 		    		{!user ? <Link className="loginButton" to="/login">Login</Link>: 

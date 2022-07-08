@@ -89,7 +89,8 @@
 	left: 50%;
 	transform: translateX(-50%);
 	width: 130px;
-	height: 150px;
+	min-height: 150px;
+	height: auto;
 	border-radius: 6px;
 	padding: 5px 5px;
 	box-shadow:  1px 1px 7px 0px #0000001f;
