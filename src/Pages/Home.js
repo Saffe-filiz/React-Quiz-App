@@ -27,8 +27,8 @@ function Home ({setShowPopUp}) {
 			    <div className="subHeader">
 			    	<p>We help you prepare for exams and quizes </p>
 			    </div>
-				<div className="startQuiz">
-					<span onClick={() => startSalving()}>Start Salving</span>
+				<div className="startQuiz" onClick={() => startSalving()}>
+					<span>Start Salving</span>
 				</div>
 			</div>
 		    </div>

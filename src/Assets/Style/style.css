@@ -72,10 +72,14 @@
 	gap: 6px;
 	width: auto;
 	height: 21px;
+}
+
+.userDrapDown p {
 	font-size: 14px;
 	font-weight: 400;
 	font-family: var(--primaryFont);
 	color: var(--brandColor);
+	cursor: pointer;
 }
 
 .userDrapDown .dropDownMenu {

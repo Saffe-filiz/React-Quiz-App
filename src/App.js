@@ -11,11 +11,11 @@ import { useState } from 'react'
 
 function App() {
   const [showPopUp, setShowPopUp] = useState(false);
-  const [quizTopics, setQuizTopics] = useState();
+  const [quizTopics, setQuizTopics] = useState([]);
 
   return (
     <div className="App">
-      {showPopUp ? <ChooseTopic setShowPopUp={setShowPopUp} setQuizTopics={setQuizTopics} />: null}
+      {showPopUp ? <ChooseTopic quizTopics={quizTopics} setShowPopUp={setShowPopUp} setQuizTopics={setQuizTopics} />: null}
         <Routes>
             <Route path="/" element={<Home setShowPopUp={setShowPopUp}/>}/>
             <Route path="/quiz" element={<Quiz/>}/>

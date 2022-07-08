@@ -36,7 +36,7 @@ function Navigation () {
 		    		{!user ? <Link className="loginButton" to="/login">Login</Link>: 
 		    		<div className="userDrapDown" tabIndex="1">
 		    			<img src={UserIcon}/>
-		    			{userName}
+		    			<p>{userName}</p>
 		    		    <img src={DropDown}/>
 		    		    <div className="dropDownMenu">
 		    		    	<ul>
