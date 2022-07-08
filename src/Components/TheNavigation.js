@@ -34,10 +34,16 @@ function Navigation () {
 		    	</div>
 		    	<div>
 		    		{!user ? <Link className="loginButton" to="/login">Login</Link>: 
-		    		<div className="userDrapDown" onClick={() => userLogOut()}>
+		    		<div className="userDrapDown" tabIndex="1">
 		    			<img src={UserIcon}/>
 		    			{userName}
 		    		    <img src={DropDown}/>
+		    		    <div className="dropDownMenu">
+		    		    	<ul>
+		    		    		<li>XXX</li>
+		    		    	    <li onClick={() => userLogOut()}>Log Out</li>	
+		    		    	</ul>
+		    		    </div>
 		    		</div>}
 		    	</div>
 		    </div>

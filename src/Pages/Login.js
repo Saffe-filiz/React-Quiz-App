@@ -27,9 +27,8 @@ function SingUp () {
 		}
 	}, []);
 
-	const isLogin = async () => {
+	const takeUserData = async () => {
 		let user = await currentUser();
-		console.log(user)
         dispatch(setUser(user));
         navigate("/", { replace: true });
 	}
@@ -39,7 +38,7 @@ function SingUp () {
     	try{
     	    const user = await singUpWithEmailAndPassword(email, password);
     	    saveUserToLcalStroage();
-    	    isLogin()
+    	    takeUserData()
     	}catch(error){
     		console.log(error)
     	}
@@ -51,7 +50,7 @@ function SingUp () {
     	try {
     		const user = await loginWithEmailAndPassword(email, password);
     		saveUserToLcalStroage();
-    		isLogin()
+    		takeUserData()
         }catch(error) {
         	console.log(error)
         }	
@@ -60,7 +59,7 @@ function SingUp () {
     const signupOrLoginWithSocialMedie = async ( value ) => {
     	try {
     	    value ? await loginWidthGoogleAccount(): await loginnWidthFacebookAccount();
-    	    isLogin()
+    	    takeUserData()
         }catch(error){
         	console.log(error)
         }
