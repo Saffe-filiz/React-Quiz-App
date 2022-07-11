@@ -1,8 +1,7 @@
 import { Navigate } from "react-router-dom";
 
-function Private ({ user, children }) {
-	console.log(!user, 'Private')
-	if(!user){
+function Private ({quizIsReady, children }) {
+	if(!quizIsReady){
 		return <Navigate to="/" replace={true} /> 
 	}
 	return children 

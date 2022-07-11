@@ -1,14 +1,28 @@
 import Close from '../Assets/Icons/Close.svg';
+
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
+import { quizReady } from '../Stores/userStore.js';
+
 import { useState, useEffect } from 'react'
 
 function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
+
+	const dispatch = useDispatch();
+
+
+	const  { readyToQuiz } = useSelector((state) => state.user)
+
 	const [select, setSelect] = useState([])
 	const topics = ['Music','Movie','Japan','Moon','Space','JavaScript','Front-End','Vue js','Tailwind','Human'];
 
 	useEffect(() => {
 		setSelect(select.concat(...quizTopics))
-	}, [quizTopics])
+	}, [quizTopics]);
+
+	useEffect(() => {
+	    select.length >= 5 ? dispatch(quizReady(true)): dispatch(quizReady(false));
+	}, [select])
 
     const isExist = value => select.includes(value);
     const addTopic = value => isExist(value) ? removeTopic(value) : selectTopic(value)
@@ -17,7 +31,6 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
     let navigate = useNavigate();
     
 	const startQuiz = () => {
-		
 		setShowPopUp(false);
 		navigate('/quiz', {replace: true});
 	}
@@ -38,7 +51,7 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 						{topics.map( (topic, index) => <li className={isExist(topic) ? 'isActive': ''}  onClick={() => addTopic(topic)} key={index}>{topic} {isExist(topic) ? <span><img src={Close}/></span>: null}</li>)}
 					</ul>
 				</div>
-				<button disabled={!select} onClick={() => startQuiz()}>Start Quiz</button>
+				<button disabled={!readyToQuiz} onClick={() => startQuiz()}>Start Quiz</button>
 			</div>
 		</div>
 	)

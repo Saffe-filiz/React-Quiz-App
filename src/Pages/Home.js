@@ -1,7 +1,7 @@
 import Group from '../Assets/Images/Group.jpg'
 import Navigation from '../Components/TheNavigation.js';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Home ({setShowPopUp}) {
 	const { user } = useSelector((state) => state.user);

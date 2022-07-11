@@ -4,14 +4,19 @@ import Control from '../Components/TheControl.js';
 import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
+import { useSelector } from 'react-redux'
+import { useNavigate } from "react-router-dom";
 
-import { useState } from 'react'
+import { useState, useLayoutEffect } from 'react'
 
 function Quiz() {
+    const  { readyToQuiz } = useSelector((state) => state.user)
+    const navigate = useNavigate();
 
-const [selectedQuestion, setSelectedQuestion] = useState(0);
 
-  return (
+    const [selectedQuestion, setSelectedQuestion] = useState(0);
+
+    return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>
             {/*<Progress questLength={5}/>*/}
