@@ -446,6 +446,10 @@
 	transition: 200ms all;
 }
 
+.quizOptions .isActive{
+	background-color: red;
+}
+
 .quizOptions .options p {
 	font-weight: 600;
 	font-size: 20px;

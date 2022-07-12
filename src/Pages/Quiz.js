@@ -5,10 +5,10 @@ import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
 import { useSelector } from 'react-redux'
+import { Prompt } from 'react-router'
 
 import { useState } from 'react'
 
-   
 
 function Quiz() {
     const [selectedQuestion, setSelectedQuestion] = useState(0);
@@ -51,7 +51,7 @@ function Quiz() {
                 <div className="questContent">
                     <h1 >{question}</h1> 
                 </div>
-                <Options options={suggestions}/>
+                <Options options={suggestions} index={index}/>
              </div>   )).slice(selectedQuestion ,selectedQuestion +1)}
             <Control 
                 selectedQuestion={selectedQuestion} 
