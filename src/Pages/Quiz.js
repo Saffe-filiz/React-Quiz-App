@@ -12,6 +12,7 @@ import { useState } from 'react'
 
 function Quiz() {
     const [selectedQuestion, setSelectedQuestion] = useState(0);
+    const [answers, setAnswers] = useState([]);
      const questions = [
       {
         question: '666 - 333',
@@ -51,7 +52,7 @@ function Quiz() {
                 <div className="questContent">
                     <h1 >{question}</h1> 
                 </div>
-                <Options options={suggestions} index={index}/>
+                <Options options={suggestions} answers={answers} setAnswers={setAnswers} selectedQuestion={selectedQuestion} />
              </div>   )).slice(selectedQuestion ,selectedQuestion +1)}
             <Control 
                 selectedQuestion={selectedQuestion} 
