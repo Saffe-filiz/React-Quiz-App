@@ -22,7 +22,7 @@ function App() {
       {showPopUp ? <ChooseTopic quizTopics={quizTopics} setQuizTopics={setQuizTopics} setShowPopUp={setShowPopUp}/>: null}
         <Routes>
             <Route path="/"   element={<Home setShowPopUp={setShowPopUp}/>}/>
-            <Route path="/quiz" element={<Private quizIsReady={readyToQuiz}><Quiz/></Private>}/>
+            <Route path="/quiz" element={<Public quizIsReady={readyToQuiz}><Quiz/></Public>}/>
             <Route path="/login" element={<Public user={user}><Login/></Public>}/>
             <Route path="/forgotpassword" element={<Public user={user}><ForgotPassword/></Public>}/>
         </Routes>

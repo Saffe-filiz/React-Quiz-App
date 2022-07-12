@@ -12,7 +12,7 @@ import { useState } from 'react'
 
 function Quiz() {
     const [selectedQuestion, setSelectedQuestion] = useState(0);
-     const [questions, setQuestions] = useState([
+     const questions = [
       {
         question: '666 - 333',
         suggestions: [
@@ -40,17 +40,19 @@ function Quiz() {
             {suggestion: '45'},
         ]
       }
-    ])
+    ]
 
     return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>
             {/*<Progress questLength={5}/>*/}
-            {Object.keys(questions).map((key, index ) => {
-                    <div className="questContent">
-                        <h1>questions[key].question</h1>
-                    </div>
-            }).slice(0,1)}
+           {questions.map(({question, suggestions, x}, index ) => (
+            <div key={index}>
+                <div className="questContent">
+                    <h1 >{question}</h1> 
+                </div>
+                <Options options={suggestions}/>
+             </div>   )).slice(selectedQuestion ,selectedQuestion +1)}
             <Control 
                 selectedQuestion={selectedQuestion} 
                 setSelectedQuestion={setSelectedQuestion}/>
