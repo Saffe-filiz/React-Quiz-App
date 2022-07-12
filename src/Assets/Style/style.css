@@ -447,7 +447,11 @@
 }
 
 .quizOptions .isActive{
-	background-color: red;
+	background-color: var(--brandColor);
+}
+
+.quizOptions .isActive p, .quizOptions .isActive .choiceName{
+	color: white;
 }
 
 .quizOptions .options p {
