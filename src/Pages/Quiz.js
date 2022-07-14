@@ -13,8 +13,11 @@ import { useState, useEffect } from 'react'
 function Quiz() {
     const dispatch = useDispatch();
     const { questions, quizIsReady } = useSelector((state) => state.questions)
-    window.onbeforeunload = (e) => [dispatch(setQuestTopic([])), dispatch(quizReady(0)), dispatch(setQuestions(null))];
-    
+    window.onbeforeunload = (e) => {
+        if(!quizIsReady) return;
+        return [console.log('isWork') ,dispatch(setQuestTopic([])), dispatch(quizReady(0)), dispatch(setQuestions(null))];
+    }
+
     const [selectedQuestion, setSelectedQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
     
