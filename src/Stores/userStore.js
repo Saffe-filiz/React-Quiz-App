@@ -5,7 +5,6 @@ const userStore = createSlice({
     name: 'userStore',
     initialState: {
         user:  JSON.parse(localStorage.getItem('user')) ?? false,
-        readyToQuiz: false,
     },
 
     reducers: {
@@ -18,13 +17,9 @@ const userStore = createSlice({
             localStorage.removeItem('user')
             state.user = actions.payload;
         },
-
-        startQuiz (state, actions) {
-            state.readyToQuiz = actions.payload
-        }
     }
 })
 
-export const { setUser, logOut, startQuiz  } = userStore.actions
+export const { setUser, logOut  } = userStore.actions
 
 export default userStore.reducer

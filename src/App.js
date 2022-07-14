@@ -15,14 +15,15 @@ function App() {
   const [showPopUp, setShowPopUp] = useState(false);
   const [quizTopics, setQuizTopics] = useState([]);
 
-  const  { user, readyToQuiz } = useSelector((state) => state.user)
-  
+  const  { user, questions  } = useSelector((state) =>  state.user)
+  const  { quizIsReady } = useSelector((state) =>  state.questions)
+
   return (
     <div className="App">
       {showPopUp ? <ChooseTopic quizTopics={quizTopics} setQuizTopics={setQuizTopics} setShowPopUp={setShowPopUp}/>: null}
         <Routes>
             <Route path="/"   element={<Home setShowPopUp={setShowPopUp}/>}/>
-            <Route path="/quiz" element={<Public quizIsReady={readyToQuiz}><Quiz/></Public>}/>
+            <Route path="/quiz" element={<Public quizIsReady={quizIsReady}><Quiz/></Public>}/>
             <Route path="/login" element={<Public user={user}><Login/></Public>}/>
             <Route path="/forgotpassword" element={<Public user={user}><ForgotPassword/></Public>}/>
         </Routes>

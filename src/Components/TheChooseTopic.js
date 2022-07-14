@@ -1,9 +1,8 @@
 import Close from '../Assets/Icons/Close.svg';
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { startQuiz } from '../Stores/userStore.js';
-import { setQuestions } from '../Stores/quizStore.js';
+import { setQuestions, quizReady } from '../Stores/quizStore.js';
 
 import { useState, useEffect } from 'react'
 
@@ -39,8 +38,9 @@ let x = [
 
 function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 
+    const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const  { readyToQuiz } = useSelector((state) => state.user)
+	const  { quizIsReady } = useSelector((state) => state.questions)
 
 	const [select, setSelect] = useState([])
 	const topics = ['Music','Movie','Japan','Moon','Space','JavaScript','Front-End','Vue js','Tailwind','Human'];
@@ -50,19 +50,19 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 	}, [quizTopics]);
 
 	useEffect(() => {
-	    select.length >= 5 ? dispatch(startQuiz(true)): dispatch(startQuiz(false));
+	    dispatch(quizReady(select.length))
 	}, [select])
 
     const isExist = value => select.includes(value);
     const addTopic = value => isExist(value) ? removeTopic(value) : selectTopic(value)
 	const selectTopic = value => setSelect(select => [...select, value]);
 	const removeTopic = value => setSelect(select.filter( topic => topic != value));
-    let navigate = useNavigate();
+
     
 	const startQuiz = () => {
 		setShowPopUp(false);
 		dispatch(setQuestions(x))
-		//navigate('/quiz', {replace: true});
+		navigate('/quiz', {replace: true});
 	}
 
 	const setTopic = () => {
@@ -81,7 +81,7 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 						{topics.map( (topic, index) => <li className={isExist(topic) ? 'isActive': ''}  onClick={() => addTopic(topic)} key={index}>{topic} {isExist(topic) ? <span><img src={Close}/></span>: null}</li>)}
 					</ul>
 				</div>
-				<button disabled={!readyToQuiz} onClick={() => startQuiz()}>Start Quiz</button>
+				<button disabled={!quizIsReady} onClick={() => startQuiz()}>Start Quiz</button>
 			</div>
 		</div>
 	)

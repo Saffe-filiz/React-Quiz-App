@@ -14,6 +14,7 @@ import { useState } from 'react'
 function Quiz() {
     const [selectedQuestion, setSelectedQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
+    
      const { questions } = useSelector((state) => state.questions)
 
     return (
