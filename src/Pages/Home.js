@@ -13,7 +13,6 @@ function Home ({setShowPopUp}) {
 		}else {
 			setShowPopUp(true)
 		}
-		
 	}
 
 	return (

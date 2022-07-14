@@ -4,14 +4,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const quizStore = createSlice({
     name: 'quizStore',
     initialState: {
-        questions: null, 
+        questions: [], 
         quizIsReady: false,
+        quizTopics: [],
     },
 
     reducers: {
-
         setQuestions (state, actions) {
-            console.log('is work')
             state.questions = actions.payload;
         },
 
@@ -19,9 +18,13 @@ const quizStore = createSlice({
             let isReady = actions.payload >= 5 
             state.quizIsReady = isReady;
         },
+
+        setQuestTopic (state, actions) {
+            state.quizTopics = actions.payload
+        }
     }
 })
 
-export const { setQuestions, quizReady  } = quizStore.actions
+export const { setQuestions, quizReady, setQuestTopic } = quizStore.actions
 
 export default quizStore.reducer

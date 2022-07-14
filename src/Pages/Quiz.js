@@ -4,19 +4,23 @@ import Control from '../Components/TheControl.js';
 import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
-import { useSelector } from 'react-redux'
-import { Prompt } from 'react-router'
-import { setQuestions } from '../Stores/quizStore.js';
+import { useSelector, useDispatch } from 'react-redux'
+import { setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
+import { Navigate } from "react-router-dom";
 
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
 
 function Quiz() {
+    const dispatch = useDispatch();
+    const { questions, quizIsReady } = useSelector((state) => state.questions)
+    window.onbeforeunload = (e) => [dispatch(setQuestTopic([])), dispatch(quizReady(0)), dispatch(setQuestions(null))];
+    
     const [selectedQuestion, setSelectedQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
     
-     const { questions } = useSelector((state) => state.questions)
-
+    if(!quizIsReady){
+        return <Navigate to="/" replace={true} /> 
+    }
     return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>

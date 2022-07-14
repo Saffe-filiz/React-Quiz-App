@@ -2,7 +2,7 @@ import Close from '../Assets/Icons/Close.svg';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { setQuestions, quizReady } from '../Stores/quizStore.js';
+import { setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
 
 import { useState, useEffect } from 'react'
 
@@ -36,18 +36,18 @@ let x = [
       }
     ]
 
-function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
+function ChooseTopic ({setShowPopUp}) {
 
     const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const  { quizIsReady } = useSelector((state) => state.questions)
+	const  { quizIsReady, quizTopics } = useSelector((state) => state.questions)
 
 	const [select, setSelect] = useState([])
 	const topics = ['Music','Movie','Japan','Moon','Space','JavaScript','Front-End','Vue js','Tailwind','Human'];
 
 	useEffect(() => {
 		setSelect(select.concat(...quizTopics))
-	}, [quizTopics]);
+	}, []);
 
 	useEffect(() => {
 	    dispatch(quizReady(select.length))
@@ -66,7 +66,7 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 	}
 
 	const setTopic = () => {
-		setQuizTopics(select);
+		dispatch(setQuestTopic(select));
 		setShowPopUp(false)
 	}
 
