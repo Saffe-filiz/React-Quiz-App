@@ -2,15 +2,44 @@ import Close from '../Assets/Icons/Close.svg';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
-import { quizReady } from '../Stores/userStore.js';
+import { startQuiz } from '../Stores/userStore.js';
+import { setQuestions } from '../Stores/quizStore.js';
 
 import { useState, useEffect } from 'react'
+
+let x = [
+      {
+        question: '666 - 333',
+        suggestions: [
+            {suggestion: '223'},
+            {suggestion: '333', currect: true},
+            {suggestion: '444'},
+            {suggestion: '555'},
+        ]
+    },
+     {
+        question: '25234 - 2334',
+        suggestions: [
+            {suggestion: '22.400'},
+            {suggestion: '21.521'},
+            {suggestion: '16.362'},
+            {suggestion: '22.900', currect: true},
+        ]
+      },
+       {
+        question: '5 * 10',
+        suggestions: [
+            {suggestion: '50', currect: true},
+            {suggestion: '55'},
+            {suggestion: '60'},
+            {suggestion: '45'},
+        ]
+      }
+    ]
 
 function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 
 	const dispatch = useDispatch();
-
-
 	const  { readyToQuiz } = useSelector((state) => state.user)
 
 	const [select, setSelect] = useState([])
@@ -21,7 +50,7 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
 	}, [quizTopics]);
 
 	useEffect(() => {
-	    select.length >= 5 ? dispatch(quizReady(true)): dispatch(quizReady(false));
+	    select.length >= 5 ? dispatch(startQuiz(true)): dispatch(startQuiz(false));
 	}, [select])
 
     const isExist = value => select.includes(value);
@@ -32,7 +61,8 @@ function ChooseTopic ({quizTopics, setShowPopUp, setQuizTopics}) {
     
 	const startQuiz = () => {
 		setShowPopUp(false);
-		navigate('/quiz', {replace: true});
+		dispatch(setQuestions(x))
+		//navigate('/quiz', {replace: true});
 	}
 
 	const setTopic = () => {

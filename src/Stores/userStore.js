@@ -19,13 +19,12 @@ const userStore = createSlice({
             state.user = actions.payload;
         },
 
-        quizReady (state, actions) {
-            console.log('stateWork', actions.payload)
+        startQuiz (state, actions) {
             state.readyToQuiz = actions.payload
         }
     }
 })
 
-export const { setUser, logOut, quizReady  } = userStore.actions
+export const { setUser, logOut, startQuiz  } = userStore.actions
 
 export default userStore.reducer

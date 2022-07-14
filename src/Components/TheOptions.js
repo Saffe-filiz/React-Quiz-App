@@ -10,7 +10,6 @@ function Options({options, answers, setAnswers, selectedQuestion}) {
 	}, [answers])
 
 	const selecAnswer = ( value ) => {
-		console.log(answers)
 		setAnswer(answers[selectedQuestion] = value);
 	}
 
