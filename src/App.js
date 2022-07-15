@@ -19,7 +19,7 @@ function App() {
       {topicModal ? <ChooseTopic/>: null}
         <Routes>
             <Route path="/"   element={<Home/>}/>
-            <Route path="/quiz" element={<Public quizIsReady={quizIsReady}><Quiz/></Public>}/>
+            <Route path="/quiz" element={<Private quizIsReady={quizIsReady}><Quiz/></Private>}/>
             <Route path="/login" element={<Public user={user}><Login/></Public>}/>
             <Route path="/forgotpassword" element={<Public user={user}><ForgotPassword/></Public>}/>
         </Routes>
