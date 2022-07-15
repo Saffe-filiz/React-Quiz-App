@@ -2,7 +2,7 @@ import Close from '../Assets/Icons/Close.svg';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
+import { setQuestions, quizReady, setQuestTopic, showTopicModal } from '../Stores/quizStore.js';
 
 import { useState, useEffect } from 'react'
 
@@ -50,7 +50,8 @@ function ChooseTopic ({setShowPopUp}) {
 	}, []);
 
 	useEffect(() => {
-	    dispatch(quizReady(select.length))
+		let isReady = select.length >= 5 
+	    dispatch(quizReady(isReady))
 	}, [select])
 
     const isExist = value => select.includes(value);
@@ -60,14 +61,14 @@ function ChooseTopic ({setShowPopUp}) {
 
     
 	const startQuiz = () => {
-		setShowPopUp(false);
 		dispatch(setQuestions(x))
+		dispatch(showTopicModal(false));
 		navigate('/quiz', {replace: true});
 	}
 
 	const setTopic = () => {
+		dispatch(showTopicModal(false));
 		dispatch(setQuestTopic(select));
-		setShowPopUp(false)
 	}
 
 	return (

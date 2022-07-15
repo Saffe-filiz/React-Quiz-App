@@ -1,19 +1,26 @@
 import Group from '../Assets/Images/Group.jpg'
 import Navigation from '../Components/TheNavigation.js';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { showTopicModal, setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
 
-function Home ({setShowPopUp}) {
-	const { user } = useSelector((state) => state.user);
+import { useEffect } from 'react'
+
+function Home () {
 	const navigation = useNavigate();
+	const dispatch = useDispatch();
 
-	const startSalving = () => {
-		if(!user) {
-			navigation('/login', {replace: false});
-		}else {
-			setShowPopUp(true)
-		}
-	}
+	const { user } = useSelector((state) => state.user);
+	const { questions } = useSelector((state) => state.questions);
+
+    useEffect(() => {
+    	dispatch(setQuestions([]));
+    	dispatch(quizReady(false));
+    	dispatch(setQuestTopic([]));
+    }, [])
+
+	const startSalving = () => !user ? navigation('/login', {replace: false}): dispatch(showTopicModal(true));
 
 	return (
 		<div className="container">

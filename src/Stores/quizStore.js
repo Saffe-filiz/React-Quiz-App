@@ -5,8 +5,9 @@ const quizStore = createSlice({
     name: 'quizStore',
     initialState: {
         questions: [], 
-        quizIsReady: false,
         quizTopics: [],
+        topicModal: false,
+        quizIsReady: false,
     },
 
     reducers: {
@@ -15,16 +16,19 @@ const quizStore = createSlice({
         },
 
         quizReady (state, actions) {
-            let isReady = actions.payload >= 5 
-            state.quizIsReady = isReady;
+            state.quizIsReady = actions.payload;
         },
 
         setQuestTopic (state, actions) {
             state.quizTopics = actions.payload
+        },
+
+        showTopicModal (state, actions) {
+            state.topicModal = actions.payload
         }
     }
 })
 
-export const { setQuestions, quizReady, setQuestTopic } = quizStore.actions
+export const { setQuestions, quizReady, setQuestTopic, showTopicModal } = quizStore.actions
 
 export default quizStore.reducer
