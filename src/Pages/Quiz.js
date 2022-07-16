@@ -4,20 +4,18 @@ import Control from '../Components/TheControl.js';
 import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
 import { Navigate } from "react-router-dom";
 
 import { useState, useEffect } from 'react'
 
 function Quiz() {
-    const dispatch = useDispatch();
     const { questions, quizIsReady } = useSelector((state) => state.questions)
 
   //  window.onbeforeunload = () =>  "You are leaving the page";
 
     const [selectedQuestion, setSelectedQuestion] = useState(0);
-    const [answers, setAnswers] = useState([]);
     
    /* if(!quizIsReady){
         return <Navigate to="/" replace={true} /> 

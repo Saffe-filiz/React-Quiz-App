@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 let x = [
       {
         question: '666 - 333',
+        topic: 'Math',
         suggestions: [
             {suggestion: '223'},
             {suggestion: '333', currect: true},
@@ -18,6 +19,7 @@ let x = [
     },
      {
         question: '25234 - 2334',
+        topic: 'Math',
         suggestions: [
             {suggestion: '22.400'},
             {suggestion: '21.521'},
@@ -27,13 +29,34 @@ let x = [
       },
        {
         question: '5 * 10',
+        topic: 'Math',
         suggestions: [
             {suggestion: '50', currect: true},
             {suggestion: '55'},
             {suggestion: '60'},
             {suggestion: '45'},
         ]
-      }
+      },
+         {
+        question: '5 * 10',
+        topic: 'Math',
+        suggestions: [
+            {suggestion: '50', currect: true},
+            {suggestion: '55'},
+            {suggestion: '60'},
+            {suggestion: '45'},
+        ]
+      },
+        {
+        question: '5 * 10',
+        topic: 'Moon',
+        suggestions: [
+            {suggestion: '50', currect: true},
+            {suggestion: '55'},
+            {suggestion: '60'},
+            {suggestion: '45'},
+        ]
+      },
     ]
 
 function ChooseTopic ({setShowPopUp}) {

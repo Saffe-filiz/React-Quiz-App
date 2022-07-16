@@ -32,6 +32,10 @@ const quizStore = createSlice({
         setAnswers (state, actions) {
             let {answer, index} = actions.payload;
             state.userAnswers[index] = answer
+        },
+
+        takeScore ( state ) {
+
         }
     }
 })
