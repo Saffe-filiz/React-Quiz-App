@@ -8,7 +8,8 @@ const quizStore = createSlice({
         quizTopics: [],
         topicModal: false,
         quizIsReady: false,
-        userAnswers: [],
+        userAnswers: {},
+        quizScore: 0,
     },
 
     reducers: {
@@ -29,11 +30,8 @@ const quizStore = createSlice({
         },
 
         setAnswers (state, actions) {
-            let {answer, index} = actions.payload
-            let self = {...state.userAnswer};
-            self = self[index] = answer;
-            console.log(answer, index, self)
-            state.userAnswers.push(self);
+            let {answer, index} = actions.payload;
+            state.userAnswers[index] = answer
         }
     }
 })

@@ -8,17 +8,16 @@ let choice = ['A', 'B,', 'C', 'D', 'E', 'F', 'G', 'H'];
 function Options({options, selectedQuestion}) {
 	const [answer, setAnswer] = useState('');
 
-	const { userAnswers } = useSelector((state) => state.questions)
+	const { userAnswers  } = useSelector((state) => state.questions)
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		let value = userAnswers;
-		console.log(value)
-		//setAnswer(userAnswers[selectedQuestion])
+		setAnswer(userAnswers[selectedQuestion])
 	}, [answer])
 
 	const selecAnswer = ( value ) => {
+		setAnswer(value)
 		dispatch(setAnswers({
 			answer: value,
 			index: selectedQuestion

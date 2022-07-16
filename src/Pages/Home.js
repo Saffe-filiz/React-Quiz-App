@@ -12,12 +12,12 @@ function Home () {
 	const dispatch = useDispatch();
 
 	const { user } = useSelector((state) => state.user);
-	const { questions } = useSelector((state) => state.questions);
+	//const { questions } = useSelector((state) => state.questions);
 
     useEffect(() => {
-    	dispatch(setQuestions([]));
+    /*	dispatch(setQuestions([]));
     	dispatch(quizReady(false));
-    	dispatch(setQuestTopic([]));
+    	dispatch(setQuestTopic([]));*/
     }, [])
 
 	const startSalving = () => !user ? navigation('/login', {replace: false}): dispatch(showTopicModal(true));
