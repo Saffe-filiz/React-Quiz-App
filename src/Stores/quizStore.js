@@ -8,6 +8,7 @@ const quizStore = createSlice({
         quizTopics: [],
         topicModal: false,
         quizIsReady: false,
+        userAnswers: [],
     },
 
     reducers: {
@@ -25,10 +26,18 @@ const quizStore = createSlice({
 
         showTopicModal (state, actions) {
             state.topicModal = actions.payload
+        },
+
+        setAnswers (state, actions) {
+            let {answer, index} = actions.payload
+            let self = {...state.userAnswer};
+            self = self[index] = answer;
+            console.log(answer, index, self)
+            state.userAnswers.push(self);
         }
     }
 })
 
-export const { setQuestions, quizReady, setQuestTopic, showTopicModal } = quizStore.actions
+export const { setQuestions, quizReady, setQuestTopic, showTopicModal, setAnswers } = quizStore.actions
 
 export default quizStore.reducer

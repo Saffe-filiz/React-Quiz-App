@@ -14,18 +14,14 @@ function Quiz() {
     const dispatch = useDispatch();
     const { questions, quizIsReady } = useSelector((state) => state.questions)
 
-    window.onbeforeunload = () => {
-    return "You are leaving the page";
-}
-  //window.onbeforeunload = warning;
-
+  //  window.onbeforeunload = () =>  "You are leaving the page";
 
     const [selectedQuestion, setSelectedQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
     
-    if(!quizIsReady){
+   /* if(!quizIsReady){
         return <Navigate to="/" replace={true} /> 
-    }
+    }*/
     return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>
@@ -35,8 +31,8 @@ function Quiz() {
                 <div className="questContent">
                     <h1 >{question}</h1> 
                 </div>
-                <Options options={suggestions} answers={answers} setAnswers={setAnswers} selectedQuestion={selectedQuestion} />
-             </div>   )).slice(selectedQuestion ,selectedQuestion +1)}
+                <Options options={suggestions} selectedQuestion={selectedQuestion} />
+            </div>  )).slice(selectedQuestion, selectedQuestion +1)}
             <Control 
                 selectedQuestion={selectedQuestion} 
                 setSelectedQuestion={setSelectedQuestion}/>
