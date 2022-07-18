@@ -13,13 +13,8 @@ import { useState, useEffect } from 'react'
 function Quiz() {
     const { questions, quizIsReady } = useSelector((state) => state.questions)
 
-  //  window.onbeforeunload = () =>  "You are leaving the page";
-
     const [selectedQuestion, setSelectedQuestion] = useState(0);
     
-   /* if(!quizIsReady){
-        return <Navigate to="/" replace={true} /> 
-    }*/
     return (
         <div className="container" style={{backgroundImage: `url(${ContentBgImage})`}}>
             <Navigation/>

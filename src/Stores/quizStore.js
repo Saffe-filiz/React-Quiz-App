@@ -9,6 +9,7 @@ const quizStore = createSlice({
         topicModal: false,
         quizIsReady: false,
         userAnswers: {},
+        userScore: {},
         quizScore: 0,
     },
 
@@ -31,15 +32,20 @@ const quizStore = createSlice({
 
         setAnswers (state, actions) {
             let {answer, index} = actions.payload;
-            state.userAnswers[index] = answer
+            state.userAnswers[index] = answer;
         },
 
-        takeScore ( state ) {
+        setScore ( state, actions ) {
+            let {score, index} = actions.payload;
+            state.userScore[index] = score;
+        },
 
+        takeQuizScore ( state ) {
+            state.quizScore =  5 * Object.values(state.userScore).filter( v => v).length;
         }
     }
 })
 
-export const { setQuestions, quizReady, setQuestTopic, showTopicModal, setAnswers } = quizStore.actions
+export const { setQuestions, quizReady, setQuestTopic, showTopicModal, setAnswers, setScore, takeQuizScore } = quizStore.actions
 
 export default quizStore.reducer
