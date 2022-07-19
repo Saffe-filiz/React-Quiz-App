@@ -15,7 +15,7 @@ const quizStore = createSlice({
 
     reducers: {
         setQuestions (state, actions) {
-            state.questions = actions.payload;
+            state.questions = actions.payload
         },
 
         quizReady (state, actions) {
