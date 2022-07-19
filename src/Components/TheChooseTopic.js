@@ -65,40 +65,39 @@ function ChooseTopic ({setShowPopUp}) {
 	const dispatch = useDispatch();
 	const  { quizIsReady, quizTopics } = useSelector((state) => state.questions)
 
-	const [select, setSelect] = useState([])
+	const [selectSubject, setSelectSubject] = useState([])
 	const topics = ['Music','Movie','Japan','Moon','Space','JavaScript','Front-End','Vue js','Tailwind','Human'];
 	const zzz = ['Math'];
 
 	useEffect(() => {
-		setSelect(select.concat(...quizTopics))
+		setSelectSubject(selectSubject.concat(...quizTopics))
 	}, []);
 
 	useEffect(() => {
-		let isReady = select.length >= 5 
+		let isReady = selectSubject.length >= 5 
 	    dispatch(quizReady(isReady))
-	}, [select]);
+	}, [selectSubject]);
 
-    const isExist = value => select.includes(value);
+    const isExist = value => selectSubject.includes(value);
     const addTopic = value => isExist(value) ? removeTopic(value) : selectTopic(value);
-	const selectTopic = value => setSelect(select => [...select, value]);
-	const removeTopic = value => setSelect(select.filter( topic => topic != value));
+	const selectTopic = value => setSelectSubject(select => [...selectSubject, value]);
+	const removeTopic = value => setSelectSubject(selectSubject.filter( topic => topic != value));
     
 	const startQuiz = () => {
-		filterTopic(x);
+		filterSubject(x);
 		dispatch(showTopicModal(false));
 		navigate('/quiz', {replace: true});
 	}
 
 	const setTopic = () => {
 		dispatch(showTopicModal(false));
-		dispatch(setQuestTopic(select));
+		dispatch(setQuestTopic(selectSubject));
 	}
 
-	const filterTopic = (object) => {
-		console.log(select)
+	const filterSubject = (object) => {
 		let result = []
-		for(let i = 0; i < select.length; i++){
-			let questions = object.filter( (item) => item.subject == select[i] );
+		for(let i = 0; i < selectSubject.length; i++){
+			let questions = object.filter( (item) => item.subject == selectSubject[i] );
 			result.push(questions)
 		}
 		dispatch(setQuestions(result.flat()));
