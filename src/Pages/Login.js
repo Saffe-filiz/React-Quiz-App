@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { setUser } from '../Stores/userStore.js';
 import { useDispatch } from 'react-redux'
-import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword, currentUser } from '../Authentication.js';
+import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword, currentUser } from '../firebase.js';
 
 
 

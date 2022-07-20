@@ -1,7 +1,7 @@
 import FormInput from '../Components/FormInput.js';
 import Group from '../Assets/Images/Group.jpg'
 import { useState } from 'react';
-import { sendPasswordResetMail } from '../Authentication.js';
+import { sendPasswordResetMail } from '../firebase.js';
 
 function ForgotPassword () {
 	const [email, setEmail] = useState('');

@@ -4,7 +4,7 @@ import DropDown from '../Assets/Icons/DropDown.svg';
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect} from 'react';
-import { userSingOut } from '../Authentication.js';
+import { userSingOut } from '../firebase.js';
 import { logOut } from '../Stores/userStore.js';
 
 function Navigation () {

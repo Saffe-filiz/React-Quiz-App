@@ -1,5 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
+
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -12,6 +14,7 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const auth = getAuth();
 
 
@@ -44,4 +47,10 @@ export  function  sendPasswordResetMail  (email) {
 
 export async function userSingOut () {
     await signOut(auth)
+}
+
+
+export async function setQuizResult (quizResult) {
+    console.log(quizResult)
+    await addDoc(collection(db, "cities"), quizResult);
 }

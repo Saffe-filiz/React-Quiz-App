@@ -3,6 +3,9 @@ import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 
 import { useSelector, useDispatch } from 'react-redux';
+
+import { setQuizResult } from '../firebase.js';
+
 import { useState, useLayoutEffect, useEffect} from 'react'
 
 function Control({selectedQuestion, setSelectedQuestion}) {
@@ -47,7 +50,7 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     }, [timer]);
 
     const endTheQuiz = () => {
-    	console.log('test')
+    		setQuizResult({name: 'test', result: 'test'})
     }
 
 	return (
