@@ -17,7 +17,7 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 	});
 
     useLayoutEffect(() => {
-    	if(selectedQuestion >= 5) {
+    	if(selectedQuestion >= questions.length -1) {
     		setHiddenButton({
     			...hiddenButton,
     			skipButton: 'hiddenContent',
@@ -73,7 +73,7 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 				        onClick={() => setSelectedQuestion(selectedQuestion += 1)}>Next
 				        {selectedQuestion == 5 ?  null: <Arrow className="arrowIcon"/>}		    
 				    </button>}
-				<button className={'skip button ' + hiddenButton.skipButton} 
+				   <button className={'skip button ' + hiddenButton.skipButton} 
 				    onClick={() => setSelectedQuestion(selectedQuestion += 1)} 
 				    disabled={hiddenButton.skipButtonDisabled}>
 				    Skip

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { setQuestions, quizReady, setQuestTopic, showTopicModal } from '../Stores/quizStore.js';
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 
 let x = [
       {
@@ -69,7 +69,7 @@ function ChooseTopic ({setShowPopUp}) {
 	const topics = ['Music','Movie','Japan','Moon','Space','JavaScript','Front-End','Vue js','Tailwind','Human'];
 	const zzz = ['Math'];
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		setSelectSubject(selectSubject.concat(...quizTopics))
 	}, []);
 
