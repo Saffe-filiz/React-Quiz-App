@@ -27,7 +27,6 @@ function Options({options, selectedQuestion}) {
 			index: selectedQuestion,
 		}))
 		dispatch(takeQuizScore());
-		console.log(quizScore)
 	}
 
 	return (

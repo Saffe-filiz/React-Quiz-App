@@ -1,9 +1,13 @@
 import Time from '../Assets/Icons/Time.svg';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
+
+import { useSelector, useDispatch } from 'react-redux';
 import { useState, useLayoutEffect, useEffect} from 'react'
 
 function Control({selectedQuestion, setSelectedQuestion}) {
+
+	const  { questions } = useSelector((state) => state.questions)
 
 	const [hiddenButton, setHiddenButton] = useState({
 		previousButton: '',
@@ -40,7 +44,11 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     useEffect(() => {
         let time = setInterval(() => setTimer(preTimer => preTimer + 1), 1000);
         return () => clearInterval(time);
-    }, [timer])
+    }, [timer]);
+
+    const endTheQuiz = () => {
+    	console.log('test')
+    }
 
 	return (
 		<div className="controlContent">
@@ -55,12 +63,16 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 			    {timer}
 			</span>
 			<div>
-				<button 
-				    className="next button"
-				    onClick={() => setSelectedQuestion(selectedQuestion += 1)}>
-				    {selectedQuestion == 5 ? 'Finis': 'Next'}
-				    {selectedQuestion == 5 ?  null: <Arrow className="arrowIcon"/>}		    
-				</button>
+			    {selectedQuestion == questions.length -1 ? 
+			        <button 
+				        className="next button"
+				        onClick={() => endTheQuiz()}>Finis	    
+				    </button>:
+				    <button 
+				        className="next button"
+				        onClick={() => setSelectedQuestion(selectedQuestion += 1)}>Next
+				        {selectedQuestion == 5 ?  null: <Arrow className="arrowIcon"/>}		    
+				    </button>}
 				<button className={'skip button ' + hiddenButton.skipButton} 
 				    onClick={() => setSelectedQuestion(selectedQuestion += 1)} 
 				    disabled={hiddenButton.skipButtonDisabled}>
