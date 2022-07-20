@@ -249,6 +249,28 @@
 	margin: 27px 50px 0 69px;
 }
 
+.choosingSubject button {
+	position: absolute;
+	width: 120px;
+	height: 37px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	bottom: 30px;
+	right: 30px;
+	font-family: var(--primaryFont);
+    color: #ffffff;
+	background-color: var(--brandColor);
+	box-shadow: 0px 10px 23px -7px #FBE18F;
+}
+
+.choosingSubject button:disabled {
+	background-color: #fcc8228f;
+	color: #4e4d4d52;
+	box-shadow:  0px 10px 23px -7px #fbe18f2e;
+}
+
+
 
 .topic ul {
 	display: inline-flex;
@@ -296,20 +318,6 @@
 
 .isActive span img {
 	width: 50%;
-}
-.choosingSubject button {
-	position: absolute;
-	width: 120px;
-	height: 37px;
-	cursor: pointer;
-	font-size: 14px;
-	font-weight: 500;
-	bottom: 30px;
-	right: 30px;
-	font-family: var(--primaryFont);
-    color: #ffffff;
-	background-color: var(--brandColor);
-	box-shadow: 0px 10px 23px -7px #FBE18F;
 }
 
 /* CHOOSE TOPIC END */
