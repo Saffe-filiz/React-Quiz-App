@@ -263,8 +263,8 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0 6px;
-	height: 24px;
+	padding: 6px 9px;
+	height: 26px;
 	font-size: 13px;
 	font-weight: 500;
 	font-family: var(--secondFont);
@@ -276,7 +276,7 @@
 .topic .isActive {
 	font-size: 13px;
 	font-weight: 500;
-	padding: 0 0 0 6px;
+	padding: 0 0 0 9px;
 	font-family: var(--secondFont);
 	color: #000000;
 	background-color: var(--brandColor);
