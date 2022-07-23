@@ -15,7 +15,7 @@ const quizStore = createSlice({
 
     reducers: {
         setQuestions (state, actions) {
-            state.questions = actions.payload.sort( (a, b) => {return Math.random() - 0.5});
+            state.questions = actions.payload.sort(() => Math.random() - 0.5);
         },
 
         quizReady (state, actions) {

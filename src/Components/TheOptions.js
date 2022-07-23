@@ -16,18 +16,22 @@ function Options({options, selectedQuestion}) {
 
 	const selecAnswer = ( value, isTrue, index ) => {
 		if(index == selected) return;
+		
 		setAnswer(value)
 		setSelected(index)
+
 		dispatch(setAnswers({
 			answer: value,
 			index: selectedQuestion,
 		}));
+
 		dispatch(setScore({
 			score: isTrue,
 			index: selectedQuestion,
 		}))
+
 		dispatch(takeQuizScore());
-	}
+	};
 
 	return (
 		<div className="optionsContent">

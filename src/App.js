@@ -4,7 +4,7 @@ import Home from './Pages/Home.js';
 import ForgotPassword from './Pages/ForgotPassword.js';
 import Private from './Components/PrivateRouter.js';
 import Public from './Components/PublicRouter.js';
-import ChooseTopic from './Components/TheChooseTopic.js';
+import TopicModal from './Components/TopicModal.js';
 import style from './Assets/Style/style.css';
 
 import { Routes, Route } from "react-router-dom";
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      {topicModal ? <ChooseTopic/>: null}
+      {topicModal ? <TopicModal/>: null}
         <Routes>
             <Route path="/"   element={<Home/>}/>
             <Route path="/quiz" element={<Private quizIsReady={quizIsReady}><Quiz/></Private>}/>
