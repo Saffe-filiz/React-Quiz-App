@@ -266,7 +266,8 @@
 
 .choosingSubject button:disabled {
 	background-color: #fcc8228f;
-	color: #4e4d4d52;
+	color: #fdfdfdd1;
+	cursor: no-drop;
 	box-shadow:  0px 10px 23px -7px #fbe18f2e;
 }
 
