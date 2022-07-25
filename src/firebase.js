@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore"; 
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore"; 
 
 
 const firebaseConfig = {
@@ -50,6 +50,9 @@ export async function userSingOut () {
 }
 
 
-export async function setQuizResult (quizResult) {
-    await addDoc(collection(db, 'posts'), quizResult);
+export async function setQuizResult () {
+    console.log(firebaseConfig)
+    const result = doc(collection(db, 'posts'));
+    await setDoc(result, {dasdas: 'asasd', asdadas:'asdasdsds'})
+
 }
