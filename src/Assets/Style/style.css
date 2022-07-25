@@ -84,12 +84,12 @@
 
 .userDrapDown .dropDownMenu {
 	position: absolute;
-	bottom: -160px;
+	bottom: -70px;
 	display: none;
 	left: 50%;
 	transform: translateX(-50%);
 	width: 130px;
-	min-height: 150px;
+	min-height: 50px;
 	height: auto;
 	border-radius: 6px;
 	padding: 5px 5px;
@@ -111,6 +111,14 @@
 	color: #828282;
 	cursor: pointer;
 	border-bottom: 1px solid #8282823d;
+}
+
+.dropDownMenu ul li:hover {
+	background-color: #00000033;
+}
+
+.dropDownMenu ul li:last-child {
+	border-bottom: none;
 }
 
 .navigationContent .loginButton {

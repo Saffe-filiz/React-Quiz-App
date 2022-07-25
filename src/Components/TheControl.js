@@ -49,8 +49,8 @@ function Control({selectedQuestion, setSelectedQuestion}) {
         return () => clearInterval(time);
     }, [timer]);
 
-    const endTheQuiz = () => {
-    		setQuizResult({name: 'test', result: 'test'})
+    const endTheQuiz = async () => {
+    	await setQuizResult()
     }
 
 	return (

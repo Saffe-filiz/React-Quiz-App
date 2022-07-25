@@ -1,6 +1,8 @@
 import Group from '../Assets/Images/Group.jpg'
 import Navigation from '../Components/TheNavigation.js';
 
+import { setQuizResult } from '../firebase.js';
+
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { showTopicModal, setQuestions, quizReady, getTopics } from '../Stores/quizStore.js';
