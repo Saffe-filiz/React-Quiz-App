@@ -2,7 +2,7 @@ import Close from '../Assets/Icons/Close.svg';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { setQuestions, quizReady, setQuestTopic, showTopicModal } from '../Stores/quizStore.js';
+import { setQuestions, quizReady, getTopics, showTopicModal } from '../Stores/quizStore.js';
 
 import { useState, useEffect, useLayoutEffect } from 'react'
 
@@ -66,11 +66,15 @@ function ChooseTopic ({setShowPopUp}) {
 	const  { quizIsReady, quizTopics } = useSelector((state) => state.questions)
 
 	const [selectSubject, setSelectSubject] = useState([])
-	const topics = ['Music','Movie','Japan','Moon','Space','JavaScript','Front-End','Vue js','Tailwind','Human'];
+	const [topics, setTopic] = useState([]);
 	const zzz = ['Math'];
 
 	useLayoutEffect(() => {
-		setSelectSubject(selectSubject.concat(...quizTopics))
+		setSelectSubject(selectSubject.concat(...quizTopics));
+
+		let questions = x.map( item => item.subject);
+		questions = [...new Set(questions)]
+		setTopic(questions)
 	}, []);
 
 	useEffect(() => {
@@ -89,9 +93,9 @@ function ChooseTopic ({setShowPopUp}) {
 		navigate('/quiz', {replace: true});
 	}
 
-	const setTopic = () => {
+	const sendTopics = () => {
 		dispatch(showTopicModal(false));
-		dispatch(setQuestTopic(selectSubject));
+		dispatch(getTopics(selectSubject));
 	}
 
 	const filterSubject = (object) => {
@@ -101,14 +105,14 @@ function ChooseTopic ({setShowPopUp}) {
 			result.push(questions)
 		}
 		dispatch(setQuestions(result.flat()));
-	}
+	};
 
 	return (
-		<div className="chooseTopicContent" onClick={() => setTopic()}>
+		<div className="chooseTopicContent" onClick={() => sendTopics()}>
 			<div className="choosingSubject" onClick={(e) => e.stopPropagation()}>
-				<img src={Close} onClick={() => setTopic()}/>
+				<img src={Close} onClick={() => sendTopics()}/>
 				<header><h1>Choose your favorite topic</h1></header>
-				<div className="choosToicSubTitle"><p>Select more than 5 topics to start quiz</p></div>
+				<div className="choosToicSubTitle"><p>{`Select more than ${Math.floor(topics.length / 2)} topics to start quiz`}</p></div>
 				<div className="topic">
 					<ul>
 						{topics.map( (topic, index) => <li className={isExist(topic) ? 'isActive': ''}  onClick={() => addTopic(topic)} key={index}>{topic} {isExist(topic) ? <span><img src={Close}/></span>: null}</li>)}

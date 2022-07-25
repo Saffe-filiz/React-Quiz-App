@@ -3,7 +3,7 @@ import Navigation from '../Components/TheNavigation.js';
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { showTopicModal, setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
+import { showTopicModal, setQuestions, quizReady, getTopics } from '../Stores/quizStore.js';
 
 import { useEffect } from 'react'
 
@@ -16,7 +16,7 @@ function Home () {
     useEffect(() => {
     	dispatch(setQuestions([]));
     	dispatch(quizReady(false));
-    	dispatch(setQuestTopic([]));
+    	dispatch(getTopics([]));
     }, [])
 
 	const startSalving = () => !user ? navigation('/login', {replace: false}): dispatch(showTopicModal(true));
