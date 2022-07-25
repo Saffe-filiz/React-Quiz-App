@@ -5,13 +5,13 @@ import Navigation from '../Components/TheNavigation.js';
 import ContentBgImage from '../Assets/Icons/ContentBgImage.png'
 
 import { useSelector } from 'react-redux'
-import { setQuestions, quizReady, setQuestTopic } from '../Stores/quizStore.js';
+import { setQuestions, setQuestTopic } from '../Stores/quizStore.js';
 import { Navigate } from "react-router-dom";
 
 import { useState, useEffect } from 'react'
 
 function Quiz() {
-    const { questions, quizIsReady } = useSelector((state) => state.questions)
+    const { questions } = useSelector((state) => state.questions)
 
     const [selectedQuestion, setSelectedQuestion] = useState(0);
     

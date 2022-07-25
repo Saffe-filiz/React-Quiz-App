@@ -78,7 +78,7 @@ function ChooseTopic ({setShowPopUp}) {
 	}, []);
 
 	useEffect(() => {
-		let isReady = selectSubject.length >= 5 
+		let isReady = selectSubject.length >= Math.floor(topics.length / 2)
 	    dispatch(quizReady(isReady))
 	}, [selectSubject]);
 
