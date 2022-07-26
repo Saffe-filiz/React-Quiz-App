@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore"; 
+import { getFirestore, collection, addDoc, doc ,onSnapshot } from "firebase/firestore"; 
 
 
 const firebaseConfig = {
@@ -52,4 +52,11 @@ export async function userSingOut () {
 
 export async function setQuizResult (quizResult) {
     await addDoc(collection(db, 'quizResults'), quizResult);
+}
+
+export async function getQuizResult (uId) {
+    let result = await onSnapshot(doc(db, "cities", "SF"), (doc) => {
+    console.log("Current data: ", doc.data());
+});
+
 }
