@@ -10,7 +10,7 @@ import { useState, useLayoutEffect, useEffect} from 'react'
 
 function Control({selectedQuestion, setSelectedQuestion}) {
 
-	const  { questions } = useSelector((state) => state.questions)
+	const  { questions, userAnswers } = useSelector((state) => state.questions)
 
 	const [hiddenButton, setHiddenButton] = useState({
 		previousButton: '',
@@ -50,7 +50,10 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     }, [timer]);
 
     const endTheQuiz = async () => {
-    	await setQuizResult()
+    	await setQuizResult({
+    		questions,
+    		userAnswers,
+    	})
     }
 
 	return (
