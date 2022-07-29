@@ -67,7 +67,6 @@ function ChooseTopic ({setShowPopUp}) {
 
 	const [selectSubject, setSelectSubject] = useState([])
 	const [topics, setTopic] = useState([]);
-	const zzz = ['Math'];
 
 	useLayoutEffect(() => {
 		setSelectSubject(selectSubject.concat(...quizTopics));

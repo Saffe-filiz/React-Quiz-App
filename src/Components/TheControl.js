@@ -4,7 +4,7 @@ import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { setQuizResult } from '../firebase.js';
+import { setQuizResult, getQuizResult } from '../firebase.js';
 
 import { useState, useLayoutEffect, useEffect} from 'react'
 
@@ -52,10 +52,11 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     }, [timer]);
 
     const endTheQuiz = async () => {
+    	await getQuizResult(user.uid)
     	await setQuizResult({
     		questions,
     		userAnswers,
-    		uId: user.uid
+    		uID: user.uid,
     	});
     	navigation('/result', {replace: true});
     }
