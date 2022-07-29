@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
-import { getFirestore, collection, addDoc , doc, getDocs, onSnapshot, query, where } from "firebase/firestore"; 
+import { getFirestore, collection, addDoc , getDocs, query, where } from "firebase/firestore"; 
 
 
 const firebaseConfig = {
@@ -44,31 +44,16 @@ export  function  sendPasswordResetMail  (email) {
     sendPasswordResetEmail(auth, email)
 }
 
-
 export async function userSingOut () {
     await signOut(auth)
 }
-
 
 export async function setQuizResult (quizResult) {
     await addDoc(collection(db, 'quizResults'), quizResult);
 }
 
-export async function getQuizResult (userID) {
- /*   let result = [];
-    const data = await getDocs(collection(db, "quizResults"));
-    data.forEach((doc) => result.push(doc.data())); */
-    
-const q = query(collection(db, "quizResults"), where("uID", "==", userID));
-
-const querySnapshot = await getDocs(q);
-querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
-});
-
-/*const q =  query(collection(db, "cities"), where("uID", "==", userID));
-let result = [];
-const unsubscribe = onSnapshot(q, (querySnapshot) =>  querySnapshot.forEach((doc) => result.push(doc.data()) ));
-console.log(result)*/
+export async function getQuizResult (userID) {    
+    const data = query(collection(db, "quizResults"), where("uID", "==", userID));
+    const result = await getDocs(data); 
+    result.forEach((doc) =>  console.log(doc.data() ) );
 }
