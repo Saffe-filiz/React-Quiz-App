@@ -46,11 +46,17 @@ const quizStore = createSlice({
         },
 
         setResults ( state, actions ) {
-            state.quizResults.push(...actions.payload)
-        }
+            console.log(actions.payload)
+            state.quizResults = actions.payload
+        },
+
+        addResult ( state, actions ) {
+            state.quizResults.push(actions.payload)
+        },
+
     }
 })
 
-export const { setQuestions, quizReady, getTopics, showTopicModal, setAnswers, setScore, takeQuizScore, setResults } = quizStore.actions
+export const { setQuestions, quizReady, getTopics, showTopicModal, setAnswers, setScore, takeQuizScore, setResults, addResult } = quizStore.actions
 
 export default quizStore.reducer

@@ -2,9 +2,7 @@ import Time from '../Assets/Icons/Time.svg';
 import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import { setResults } from '../Stores/quizStore.js';
+import { useSelector } from 'react-redux';
 
 import { useNavigate } from "react-router-dom";
 import { setQuizResult, getQuizResult } from '../firebase.js';
@@ -16,7 +14,6 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 
 	const  { questions, userAnswers } = useSelector((state) => state.questions)
 	const  { user } = useSelector((state) => state.user)
-	const dispatch = useDispatch();
 
 	const [hiddenButton, setHiddenButton] = useState({
 		previousButton: '',
@@ -55,13 +52,13 @@ function Control({selectedQuestion, setSelectedQuestion}) {
         return () => clearInterval(time);
     }, [timer]);
 
-    const endTheQuiz = async () => {
-    	dispatch(setResults(user.uid))
-    	setQuizResult({
+    const endTheQuiz = () => {
+    	let result = {
     		questions,
     		userAnswers,
     		uID: user.uid,
-    	});
+    	}
+    	setQuizResult(result);
     	navigation('/result', {replace: true});
     }
 
