@@ -40,7 +40,7 @@ function Navigation () {
 		    		    <img src={DropDown}/>
 		    		    <div className="dropDownMenu">
 		    		    	<ul>
-		    		    		<li>XXX</li>
+		    		    		<Link to="/result"><li>XXX</li></Link>
 		    		    	    <li onClick={() => userLogOut()}>Log Out</li>	
 		    		    	</ul>
 		    		    </div>

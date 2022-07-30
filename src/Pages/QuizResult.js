@@ -1,3 +1,5 @@
+import Navigation from '../Components/TheNavigation.js';
+
 import { getQuizResult } from '../firebase.js';
 import { useSelector } from 'react-redux';
 
@@ -15,6 +17,7 @@ function QuizResult ({ userID }) {
 	}
 	return (
 		<div className="container">
+			<Navigation/>
 			{Object.keys(quizResults).map( (item, index) => (
 				<span key={index}>{quizResults[item].uID}</span>
 			))}
