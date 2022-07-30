@@ -21,7 +21,7 @@ function App() {
         <Routes>
             <Route path="/"   element={<Home/>}/>
             <Route path="/quiz" element={<Private quizIsReady={quizIsReady}><Quiz/></Private>}/>
-            <Route path="/result" element={<Public user={!user}><QuizResult/></Public>}/>
+            <Route path="/result" element={<Public user={!user}><QuizResult userID={user.uid}/></Public>}/>
             <Route path="/login" element={<Public user={user}><Login/></Public>}/>
             <Route path="/forgotpassword" element={<Public user={user}><ForgotPassword/></Public>}/>
         </Routes>

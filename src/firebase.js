@@ -2,6 +2,10 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, sendPasswordResetEmail, signOut } from "firebase/auth";
 import { getFirestore, collection, addDoc , getDocs, query, where } from "firebase/firestore"; 
 
+import  store from './store.js';
+import { setResults } from './Stores/quizStore.js';
+
+//const {dispatch} = store;
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -11,7 +15,6 @@ const firebaseConfig = {
     messagingSenderId: process.env.REACT_APP_MASSAGOING_SENDER_ID,
     appId: process.env.REACT_APP_APP_ID,
 };
-
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -53,7 +56,9 @@ export async function setQuizResult (quizResult) {
 }
 
 export async function getQuizResult (userID) {    
-    const data = query(collection(db, "quizResults"), where("uID", "==", userID));
+    let quizResult = [];
+    const data = await query(collection(db, "quizResults"), where("uID", "==", userID));
     const result = await getDocs(data); 
-    result.forEach((doc) =>  console.log(doc.data() ) );
+    result.forEach((doc) =>  quizResult.push(doc.data()));
+    store.dispatch(setResults(quizResult))
 }

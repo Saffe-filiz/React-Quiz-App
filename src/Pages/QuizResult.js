@@ -1,21 +1,24 @@
 import { getQuizResult } from '../firebase.js';
 import { useSelector } from 'react-redux';
 
-import { useState, useLayoutEffect, useEffect} from 'react'
+import { useState, useEffect} from 'react'
 
-function QuizResult () {
-	const  { user } = useSelector((state) => state.user);
+function QuizResult ({ userID }) {
+	const  { quizResults } = useSelector((state) => state.questions);
 
 	useEffect(() => {
 		getResult()
-		console.log('test')
 	},[])
 
-	const getResult =  () => {
-		 getQuizResult(user.uid)
+	const getResult = async () => {
+		await getQuizResult(userID)
 	}
 	return (
-		<div className="container">Test</div>
+		<div className="container">
+			{Object.keys(quizResults).map( (item, index) => (
+				<span key={index}>{quizResults[item].uID}</span>
+			))}
+		</div>
 	);
 }
 

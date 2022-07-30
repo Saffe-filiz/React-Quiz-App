@@ -52,7 +52,6 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     }, [timer]);
 
     const endTheQuiz = async () => {
-    	await getQuizResult(user.uid)
     	await setQuizResult({
     		questions,
     		userAnswers,
