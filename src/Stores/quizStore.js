@@ -46,8 +46,7 @@ const quizStore = createSlice({
         },
 
         setResults ( state, actions ) {
-            console.log( actions.payload)
-            state.quizResults = actions.payload
+            state.quizResults.push(...actions.payload)
         }
     }
 })

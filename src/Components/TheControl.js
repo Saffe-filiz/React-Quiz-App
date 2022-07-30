@@ -3,6 +3,9 @@ import { ReactComponent as Arrow}  from '../Assets/Icons/Arrow.svg';
 import { ReactComponent as Skip} from '../Assets/Icons/Skip.svg';
 
 import { useSelector, useDispatch } from 'react-redux';
+
+import { setResults } from '../Stores/quizStore.js';
+
 import { useNavigate } from "react-router-dom";
 import { setQuizResult, getQuizResult } from '../firebase.js';
 
@@ -13,6 +16,7 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 
 	const  { questions, userAnswers } = useSelector((state) => state.questions)
 	const  { user } = useSelector((state) => state.user)
+	const dispatch = useDispatch();
 
 	const [hiddenButton, setHiddenButton] = useState({
 		previousButton: '',
@@ -52,7 +56,8 @@ function Control({selectedQuestion, setSelectedQuestion}) {
     }, [timer]);
 
     const endTheQuiz = async () => {
-    	await setQuizResult({
+    	dispatch(setResults(user.uid))
+    	setQuizResult({
     		questions,
     		userAnswers,
     		uID: user.uid,
