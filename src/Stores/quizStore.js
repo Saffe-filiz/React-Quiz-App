@@ -12,6 +12,7 @@ const quizStore = createSlice({
         userScore: {},
         quizScore: 0,
         quizResults: [], 
+        userQuestionResponseTime: {},
     },
 
     reducers: {
@@ -54,9 +55,15 @@ const quizStore = createSlice({
             state.quizResults.push(actions.payload)
         },
 
+        takeResponseTime ( state, actions ){
+            let { time, index } = actions.payload;
+            console.log(time)
+           state.userQuestionResponseTime[index] += time;
+        }
+
     }
 })
 
-export const { setQuestions, quizReady, getTopics, showTopicModal, setAnswers, setScore, takeQuizScore, setResults, addResult } = quizStore.actions
+export const { setQuestions, quizReady, getTopics, showTopicModal, setAnswers, setScore, takeQuizScore, setResults, addResult, takeResponseTime} = quizStore.actions
 
 export default quizStore.reducer

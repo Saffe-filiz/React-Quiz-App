@@ -4,7 +4,6 @@ import Group from '../Assets/Images/Group.jpg'
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { setUser } from '../Stores/userStore.js';
-import { setResults } from '../Stores/quizStore.js';
 import { useDispatch } from 'react-redux'
 import { singUpWithEmailAndPassword, loginWidthGoogleAccount, loginnWidthFacebookAccount, loginWithEmailAndPassword, currentUser } from '../firebase.js';
 
@@ -32,7 +31,6 @@ function SingUp () {
 		let user = await currentUser();
 		console.log(user.uid)
         dispatch(setUser(user));
-        dispatch(setResults(user.uid));
         navigate("/", { replace: true });
 	}
 
