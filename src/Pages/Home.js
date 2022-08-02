@@ -5,7 +5,7 @@ import { setQuizResult } from '../firebase.js';
 
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { showTopicModal, setQuestions, quizReady, getTopics, setAnswers } from '../Stores/quizStore.js';
+import { showTopicModal, setQuestions, quizReady, getTopics, clearUserAnswers } from '../Stores/quizStore.js';
 
 import { useEffect } from 'react'
 
@@ -17,6 +17,7 @@ function Home () {
 
     useEffect(() => {
     	dispatch(setQuestions([]));
+    	dispatch(clearUserAnswers());
     	dispatch(quizReady(false));
     	dispatch(getTopics([]));
     }, [])

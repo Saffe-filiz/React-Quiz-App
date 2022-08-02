@@ -18,6 +18,10 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 	const  { questions, userAnswers, quizScore } = useSelector((state) => state.questions)
 	const  { user } = useSelector((state) => state.user)
 
+	
+    const [questionTime, setQuestionTime] = useState(0);
+    const [timePerQuestion, setTimePerQuestion] = useState([]);
+
 	const [hiddenButton, setHiddenButton] = useState({
 		previousButton: '',
 		previousButtonDisabled: false,
@@ -45,6 +49,15 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 		        skipButtonDisabled: false,
 	        });
     	}
+
+    	let time = setInterval(() => setQuestionTime(preTime => preTime + 1), 1000);
+
+        let arr = {...timePerQuestion} ;
+    	arr[selectedQuestion] ? arr[selectedQuestion] += questionTime: arr[selectedQuestion] = questionTime  
+    	setTimePerQuestion(arr);
+    	setQuestionTime(0);
+
+    	return () => clearInterval(time);
     }, [selectedQuestion]);
     
 
@@ -55,21 +68,6 @@ function Control({selectedQuestion, setSelectedQuestion}) {
         return () => clearInterval(time);
     }, [quizTime]);
 
-
-    const [questionTime, setQuestionTime] = useState(0);
-    const [timePerQuestion, setTimePerQuestion] = useState([]);
-
-    useEffect(() => {
-        let time = setInterval(() => setQuestionTime(preTime => preTime + 1), 1000);
-        return () => clearInterval(time);
-    }, [selectedQuestion]);
-
-    useEffect(() => {
-    	let arr = {...timePerQuestion} ;
-    	arr[selectedQuestion] ? arr[selectedQuestion] += questionTime: arr[selectedQuestion] = questionTime  
-    	setTimePerQuestion(arr)
-    	setQuestionTime(0)
-    }, [selectedQuestion])
 
     const endTheQuiz = () => {
     	setQuizResult({
