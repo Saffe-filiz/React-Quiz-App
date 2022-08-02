@@ -15,7 +15,7 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 	const navigation = useNavigate();
 	const dispatch = useDispatch();
 
-	const  { questions, userAnswers } = useSelector((state) => state.questions)
+	const  { questions, userAnswers, quizScore } = useSelector((state) => state.questions)
 	const  { user } = useSelector((state) => state.user)
 
 	const [hiddenButton, setHiddenButton] = useState({
@@ -55,50 +55,40 @@ function Control({selectedQuestion, setSelectedQuestion}) {
         return () => clearInterval(time);
     }, [quizTime]);
 
-    const endTheQuiz = () => {
-    	let result = {
-    		questions,
-    		userAnswers,
-    		uID: user.uid,
-    		timePerQuestion: allQuestionTime,
-    	}
-    	setQuizResult(result);
-    	navigation('/result', {replace: true});
-    }
-
 
     const [questionTime, setQuestionTime] = useState(0);
-    const [allQuestionTime, setAllQuestionsTime] = useState([]);
+    const [timePerQuestion, setTimePerQuestion] = useState([]);
 
     useEffect(() => {
         let time = setInterval(() => setQuestionTime(preTime => preTime + 1), 1000);
         return () => clearInterval(time);
     }, [selectedQuestion]);
 
-
-    const takeTime = () => {
-    	let arr = {...allQuestionTime} ;
-    	arr[selectedQuestion] >= 0 ? arr[selectedQuestion] += questionTime: arr[selectedQuestion] = questionTime  
-    	setAllQuestionsTime(arr)
-    	console.log(allQuestionTime)
+    useEffect(() => {
+    	let arr = {...timePerQuestion} ;
+    	arr[selectedQuestion] ? arr[selectedQuestion] += questionTime: arr[selectedQuestion] = questionTime  
+    	setTimePerQuestion(arr)
     	setQuestionTime(0)
-    }
+    }, [selectedQuestion])
 
-    const nextQuestion = () => {
-    	takeTime();
-    	setSelectedQuestion(selectedQuestion += 1);
-    }
-
-    const prevQuestion = () =>  {
-    	takeTime();
-    	setSelectedQuestion(selectedQuestion -= 1);
+    const endTheQuiz = () => {
+    	setQuizResult({
+    		questions,
+    		userAnswers,
+    		timePerQuestion,
+    		quizTime,
+    		quizScore,
+    		uID: user.uid,
+    		totalNumberOfQuestions: questions.length,
+    	});
+    	navigation('/result', {replace: true});
     }
 
 	return (
 		<div className="controlContent">
 			<button 
 			    className={'previous button ' + hiddenButton.previousButton} 
-			    onClick={() => prevQuestion()} 
+			    onClick={() => setSelectedQuestion(selectedQuestion += 1)} 
 			    disabled={hiddenButton.previousButtonDisabled}>
 			    <Arrow className="arrowIcon"/>
 			    Previous
@@ -114,11 +104,11 @@ function Control({selectedQuestion, setSelectedQuestion}) {
 				    </button>:
 				    <button 
 				        className="next button"
-				        onClick={() => nextQuestion()}>Next
-				        {selectedQuestion == 5 ?  null: <Arrow className="arrowIcon"/>}		    
+				        onClick={() => setSelectedQuestion(selectedQuestion += 1)}>Next
+				        {selectedQuestion == questions.length -1 ?  null: <Arrow className="arrowIcon"/>}		    
 				    </button>}
 				   <button className={'skip button ' + hiddenButton.skipButton} 
-				    onClick={() => nextQuestion()} 
+				    onClick={() => setSelectedQuestion(selectedQuestion += 1)} 
 				    disabled={hiddenButton.skipButtonDisabled}>
 				    Skip
 				    <Skip/>

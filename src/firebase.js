@@ -52,6 +52,7 @@ export async function userSingOut () {
 }
 
 export async function setQuizResult (quizResult) {
+    console.log(quizResult)
     await addDoc(collection(db, 'quizResults'), quizResult);
 }
 
