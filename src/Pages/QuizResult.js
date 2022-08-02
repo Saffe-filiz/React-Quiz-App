@@ -17,10 +17,12 @@ function QuizResult ({ userID }) {
 	}
 	return (
 		<div className="container">
-			<Navigation/>
-			{Object.keys(quizResults).map( (item, index) => (
-				<span key={index}>{quizResults[item].uID}</span>
-			))}
+		<Navigation/>
+		    <div className="quizResult">
+			    {Object.keys(quizResults).map( (item, index) => (
+				    <div className="resultCart" key={index}>{quizResults[item].uID}</div>
+			    ))}
+		    </div>
 		</div>
 	);
 }
